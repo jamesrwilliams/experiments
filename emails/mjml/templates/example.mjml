@@ -1,0 +1,21 @@
+<mjml>
+  <mj-head>
+    <mj-title>_placeholder</mj-title>
+    
+    <mj-attributes>
+      <mj-text line-height="22px" color="#3B3E3D" font-family="Helvetica" font-weight="100" />
+    </mj-attributes>
+
+    <mj-style inline="inline">
+
+      .link-nostyle { text-decoration: none }
+
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <!-- Email stuff lives here -->
+
+  </mj-body>
+</mjml>
+

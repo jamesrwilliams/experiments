@@ -1,0 +1,15 @@
+{
+  "name": "jw-experiments-mjml",
+  "version": "1.0.0",
+  "description": "Trial usage of MJML for client email builds.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mjml": "^4.4.0-beta.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
