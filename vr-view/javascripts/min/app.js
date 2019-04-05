@@ -1,0 +1,1 @@
+!function($){"use strict";function e(){var e=new VRView.Player("#vrview",{video:"https://d3ln2sx41zmbfg.cloudfront.net/temp/example_360-VR.mp4",is_stereo:!0})}window.addEventListener("load",e)}(jQuery);

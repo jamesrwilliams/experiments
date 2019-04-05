@@ -1,0 +1,112 @@
+/* Project variables
+-------------------------------------------------------- */
+@import 'variables';
+
+/* Vendor imports
+-------------------------------------------------------- */
+@import 'vendor/bootstrap/bootstrap';
+@import 'vendor/font-awesome/font-awesome';
+@import 'partials/fonts';
+
+/* Typography
+-------------------------------------------------------- */
+body {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+
+.serif {font-family: $font-family-serif;}
+.sans-serif {font-family: $font-family-sans-serif;}
+
+p {}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {}
+
+header {
+	
+	display: flex;
+	
+}
+
+#vrview,
+#video {
+	
+	flex: 1;
+	
+}
+
+#vrview {
+
+	margin: 0 auto;
+
+	iframe {
+		
+		width: 100%;
+		min-height: 750px;
+		
+	}
+
+}
+
+#video {
+	
+	video {
+	
+		max-width: 100%;
+		height: auto;
+		
+	}
+	
+}
+
+
+
+/* Partials
+-------------------------------------------------------- */
+@import 'partials/helpers';
+@import 'partials/header';
+
+/* WYSIWYG Image Styles
+-------------------------------------------------------- */
+.alignnone {margin: 5px 20px 20px 0;
+	&.no-margin-tb {margin-top: 0; margin-bottom: 0;}
+	&.no-margin-lr {margin-left: 0; margin-right: 0;}
+}
+.aligncenter, div.aligncenter {display: block; margin: 5px auto 5px auto;}
+
+.alignright {float: right; margin: 5px 0 20px 20px;}
+.alignleft {float: left; margin: 5px 20px 20px 0;}
+.aligncenter {display: block; margin: 5px auto 5px;}
+
+img.alignright, img.alignnone, img.alignleft, img.aligncenter {max-width: 100%; width: auto; height: auto; display: block;}
+
+a {
+	img.alignright {float: right; margin: 5px 0 20px 20px;}
+	img.alignnone {margin: 5px 20px 20px 0;}
+	img.alignleft {float: left; margin: 5px 20px 20px 0;}
+	img.aligncenter {display: block; margin-left: auto; margin-right: auto;}
+}
+.wp-caption {background: #fff; border: 1px solid #f0f0f0; max-width: 96%; padding: 5px 3px 10px; text-align: center;
+	&.alignnone {margin: 5px 20px 20px 0;}
+	&.alignleft {margin: 5px 20px 20px 0;}
+	&.alignright {margin: 5px 0 20px 20px;}
+	img {border: 0 none; height: auto; margin: 0; max-width: 98.5%; padding: 0; width: auto;}
+	p.wp-caption-text {font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px;}
+}
+
+
+/* Responsive breakpoints
+-------------------------------------------------------- */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {}
