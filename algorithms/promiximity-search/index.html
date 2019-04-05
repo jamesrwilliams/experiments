@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Bam Map</title>
+
+	<link rel="stylesheet" href="stylesheets/css/app.css">
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgJkY5WjZ-UmAzJ5JpAylPVcYTzbW-azg"></script>
+	
+</head>
+<body>
+
+	<main>
+		
+		<div class="controls">
+			
+			<form id="search">
+				<button type="button" id="reset"><i class="fa fa-ban" aria-hidden="true"></i></button>
+				<input type="text" placeholder="Search locations or addresses">
+				<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+				<button type="button" style="display: none;" id="locate"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
+			</form>
+	
+			<ol id="locations"></ol>
+			
+		</div>
+	
+		<div id="map"></div>
+		
+	</main>
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="javascripts/min/app.js"></script>
+	
+	
+</body>
+</html>
