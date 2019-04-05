@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Not So Cautious Geolocation</title>
+
+	<link rel="stylesheet" href="stylesheets/css/app.css">
+	
+</head>
+<body>
+
+	<header>
+		
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Geocode</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav"></ul>
+					<div class="nav navbar-nav navbar-right" style="margin-left: 2em">
+						<form class="navbar-form navbar-left">
+							<div class="form-group">
+								<input class="form-control" id="api_key" placeholder="API Key" type="text">
+								<i id="clear" class="fa fa-minus-circle" aria-hidden="true"></i>
+							</div><a class="btn btn-primary" id="validate">Validate</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+		
+	</header>
+	
+	<main>
+				
+		<section class="input-container">
+			
+			<textarea id="input_data" placeholder="Addresses to Search Go Here"></textarea>
+			<a id="start" href="#" disabled class="btn btn-success">Enter API Key</a>
+			
+		</section>
+	
+		<section class="results-container">
+			
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Entry</th>
+						<th>lat</th>
+						<th>lng</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			
+		</section>		
+		
+	</main>
+	 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="javascripts/min/app.js"></script>
+	
+</body>
+</html>
