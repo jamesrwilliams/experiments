@@ -1,4 +1,4 @@
-# Experiments
+# 🧪 Experiments
 
 A collection of random bits and pieces.
 
