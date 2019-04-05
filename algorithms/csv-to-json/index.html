@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSV to JSON Utility</title>
+</head>
+<body>
+  
+  <style>
+    
+    body,
+    html {
+      
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      
+    }
+    
+    label,
+    textarea {
+      
+      display: block;
+      width: 100%;
+      
+    }
+    
+    textarea {
+      
+      height: 50vh;
+      font-family: monospace;
+      
+    }
+    
+    main { 
+      
+      height: 100%;
+      display: flex;
+      flex-grow: 1;
+    
+    }
+    
+    section {
+      
+      padding: 25px;
+      
+    }
+    
+    section:first-child {
+      
+      width: 30%;
+      background: #ccc;
+      
+    }
+    
+    section:last-child {
+      
+      width: 70%;
+      overflow: scroll;
+      
+    }
+    
+  </style>
+  
+  <main>
+    
+    <section>
+      
+      <h1>CSV to JSON</h1>
+      
+      <hr>
+      
+      <p>A utility project for converting client provided CSV data to a JSON object used in an application.</p>
+      
+      <label for="csv">Input CSV
+        <textarea name="csv" id="csv-input" cols="30" rows="10"></textarea>
+      </label>
+      
+      <br>
+      
+      <button id="process">Process</button>
+      <button id="save-ls">Save</button>
+      
+    </section>
+    
+    <section>
+      
+      <pre><code id="stage">[...]</code></pre>
+      
+    </section>
+    
+  </main>
+  
+  <script src="src/app.js"></script>
+  
+</body>
+</html>
