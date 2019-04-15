@@ -2,14 +2,11 @@
   "name": "transactional-emails",
   "version": "1.0.0",
   "description": "",
-  "main": "tokens.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "gulp": "^4.0.0",
-    "gulp-replace": "^1.0.0"
+    "gulp-dom": "^1.0.0",
+    "gulp-watch": "^5.0.1"
   }
 }

@@ -1,12 +1,11 @@
-module.exports.tokens = [
+module.exports = [
     {
-        target: 'name',
+        token: 'name',
         replacement: 'Fun Dip',
     },
     {
-        target: 'drink',
+        token: 'drink',
         replacement: 'coffee'
     }
 ];
-
 
