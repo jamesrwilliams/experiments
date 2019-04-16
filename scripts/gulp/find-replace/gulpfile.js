@@ -24,6 +24,12 @@ gulp.task('parse', () => {
     return gulp.src(options.input)
         .pipe(dom(function() {
 
+            let styles = this.querySelectorAll('html')[0].querySelectorAll('style#devStyles');
+
+            styles.forEach(elm => {
+                elm.remove();
+            });
+
             tokens.forEach(token => {
                 let elements = this.querySelectorAll('body')[0].querySelectorAll(`${options.elm}[data-token="${token.token}"]`);
 

@@ -1,30 +1,34 @@
 # Find & replace email template tokens
 
-- [Quick Start](#quick-start)
-- [HTML Templates](#html-templates)
-- [Tokens](#tokens)
-- [Example](#example)
+This projects adds a script to replace placeholder text with personalisation tokens without changing the preview design. Simply wrap any placeholder text in an element with a custom data-attribute and the text is replaced with a specified personalisation token.
 
-## Quick Start
+- [Quick start](#quick-start)
+- [HTML templates](#html-templates)
+- [Tokens](#tokens)
+- [An example](#example-usage)
+
+## Quick start
 
 1. Install dependencies using `npm install`,
-2. Add source HTML files to the src directory
-3. Run `gulp dev` for automatic reload on HTML file change.
-4. HTML files with tokens replaced will be placed in the dist directory. 
+2. Add source HTML files to the `src` directory
+3. Run `gulp dev` for automatic reload whenever a file in the `src` directory is updated.
+4. HTML files with tokens replaced will be placed in the `dist` directory.
 
-N.B - Please note if you add any tokens to the `tokens.js` file you will need to restart this command.
+**Note** - If you add any tokens to the `tokens.js` file you will while `gulp dev` is running, you will need to restart the task for the changes to take effect.
+
+You can also run the script once by running just: `gulp parse`.
 
 ## Options
 
 A configuration object can be found in `gulpfile.js` with basic settings for how the replacement script should work.
 
-- input: String - The input directory path.
-- output: String - The destination path for processed files.
-- elm: String - The element used for the `data-token`.
+- input: String - The input directory path. Default: `./src/**/*.html`
+- output: String - The destination path for processed files. Default: `./dist/` 
+- elm: String - The element used for the `data-token`. Default: `span`
 
-## HTML Templates
+## HTML templates
 
-Wrap any default text in a span with the `data-token` attribute set to the key of the token you want replaced when running parse. For example:
+Wrap any placeholder text in a span with the `data-token` attribute set to the key of the token you want replaced when running parse. For example:
 
 ```html
 <span data-token="customer_first_name">John Smith</span>
@@ -32,44 +36,52 @@ Wrap any default text in a span with the `data-token` attribute set to the key o
 
 ### Utility CSS
 
-Add the following CSS rules to the HTML to easily distinguish what elements have the token elements wrapped around them.
+The following CSS rules to the HTML file to easily distinguish what elements have the token elements wrapped around them, and on hover display which token it will be using.
 
-```css
-span[data-token] { background: #ff0000; }
+Use the ID `devStyles` to identity any style blocks that shouldn't be included in the output HTML. Style tags with this ID are removed by the script on build.
 
-/* This will append the token data-attribute next to the default value. */
-span[data-token]:after { content: " [" attr(data-token) "]"; }
-
+```html
+<style id="devStyles">
 /* A more complex solution that shows the token data-attribute on hover */
 span[data-token] {background: #ff0000; }
 span[data-token]:before { content: attr(data-token); background: yellow; color: black; font-size: 11px; text-align: center; width: 200px; z-index: 600; position: absolute; display: none; }
 span[data-token]:hover:before { display: block }
+</style>
 ```
 
 ## Tokens
 
-The tokens.js file is an exported array of token objects with the following structure:
+The `tokens.js` file is an exported array of token objects that are used to swap elements with their personalisation tokens. Each token object is made up of the following fields:
 
 ```js
 {
-    token: 'foo', /* This is the data-token attribute. */
-    replacement: 'bar' // This is the text that will replace the token foo.
+    token: 'foo', 
+    replacement: 'bar'
 }
 ```
 
-## Example
+Note - You can also add HTML code to the replacement property.
 
-*Example template:*
+## Example Usage
+
+Here is an example of what the script does:
+
+*src/example.html*
 ```html
-<span data-token="action">Default Value</span>
+<span data-token="foo">placeholder text</span>
 ```
-*Example token.js*
+*token.js*
 ```js
-module.exports = [
-    { target: 'action', replacement: '<p>Hello World!</p>', },
-];
+{
+    target: 'foo',
+    replacement: '<p>bar!</p>'
+}
 ```
-*Results in*
+*dist/example.html*
 ```html
-<p>Hello World!</p>
+<p>bar!</p>
 ```
+
+## Read More
+
+- [SalesForce Docs - Marketing Cloud Email (Personalisation Strings)](https://help.salesforce.com/articleView?id=mc_es_personalization_strings.htm&type=5)
