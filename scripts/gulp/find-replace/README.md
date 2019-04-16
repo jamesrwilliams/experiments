@@ -37,8 +37,13 @@ Add the following CSS rules to the HTML to easily distinguish what elements have
 ```css
 span[data-token] { background: #ff0000; }
 
-/* This will append the data-attribute next to the default value. */
+/* This will append the token data-attribute next to the default value. */
 span[data-token]:after { content: " [" attr(data-token) "]"; }
+
+/* A more complex solution that shows the token data-attribute on hover */
+span[data-token] {background: #ff0000; }
+span[data-token]:before { content: attr(data-token); background: yellow; color: black; font-size: 11px; text-align: center; width: 200px; z-index: 600; position: absolute; display: none; }
+span[data-token]:hover:before { display: block }
 ```
 
 ## Tokens
