@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<style>
+	* { box-sizing: border-box }
+	body {
+		background: #c0c0c0;
+		font-family: sans-serif;
+	}
+	main {
+		max-width: 1200px;
+		margin: 50px auto;
+	}
+	.injection-container {
+		background: white;
+		padding: 5px;
+		position: relative;
+	}
+
+	.injection-container:before {
+		content: attr(id);
+		background: yellow;
+		left: 0;
+		font-family: monospace;
+		right: 0;
+		padding: 5px;
+		position: absolute;
+		display: block;
+		transform: translateY(-100%);
+		border-bottom: 1px solid red;
+	}
+
+</style>
+
+<main>
+	<section class="injection-container" id="custom_element_1">
+		<h1 style="text-align: center" id="foo">Hello World</h1>
+		<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dolores ducimus eum exercitationem inventore labore minima molestiae, non praesentium quod quos recusandae, repellendus repudiandae, similique ullam unde veritatis vero voluptas.</span><span>Accusamus ad asperiores culpa dolores dolorum eius eligendi eos est et fugiat ipsa itaque nemo nisi nobis, obcaecati odit, quo quos recusandae repellendus similique vitae voluptatem voluptates. Natus, officiis optio.</span><span>Adipisci aliquam atque commodi cupiditate debitis eaque error facere illum in inventore itaque labore magnam maxime, nisi omnis optio pariatur placeat porro quidem quod ratione similique tempora totam velit voluptatem?</span><span>Quas repellat vero vitae? Atque corporis culpa deserunt dolor dolorum eos est explicabo fuga impedit laborum magni molestiae mollitia, nihil non omnis quisquam quod ratione voluptates. Cum mollitia rerum tempore?</span></p>
+	</section>
+
+
+</main>
+
+</body>
+</html>
