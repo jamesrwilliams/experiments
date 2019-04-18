@@ -6,8 +6,6 @@
 		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Document</title>
-	</head>
-	<body class="extension-container">
 		<style>
 			html,body {
 				margin: 0;
@@ -16,25 +14,64 @@
 			}
 			.extension-container {
 				width: 600px;
+				font-family: sans-serif;
 				margin: 0;
-				padding: 5px;
+				padding: 5px 8px;
 			}
 
 			#editor {
 				position: relative;
 				width: 100%;
 				height: 300px;
+				margin-bottom: 8px;
+			}
+			.pts-button {
+				border: 0;
+				background: #cccccc;
+				display: block;
+				width: 49%;
+				font-size: 12px;
+				padding: 8px 0;
+				border-radius: 3px;
+			}
+			.button-container {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 10px;
+			}
+			.target-container {
+				margin-bottom: 10px;
+			}
+			.target-container label {
+				display: flex;
+				justify-content: space-between;
+			}
+			.target-container span {
+				padding-right: 10px;
+			}
+			.target-container input {
+				font-family: monospace;
+				width: 100%;
+				border: 1px solid #cccccc;
+				padding: 0 5px;
+				border-radius: 3px;
 			}
 		</style>
-		<div id="editor">some text</div>
-		<label for="clip"></label>
-		<input type="text" id="clip" />
-		<label for="target">
-			<span class="label-message">Target element</span>
-			<input type="text" name="target" id="target" placeholder="div#element" value="#example" />
-		</label>
-		<button id="use_clipboard">Use Clipboard</button>
-		<button class="pts-button" id="send_message">Replace</button>
+	</head>
+	<body class="extension-container">
+
+		<div class="target-container">
+			<label for="target">
+				<span class="label-message">Target</span>
+				<input type="text" name="target" id="target" placeholder="div#element" value=".bgt-marketing-creative" />
+			</label>
+		</div>
+		<div id="editor"></div>
+		<div class="button-container">
+			<button class="pts-button" id="btn_load_clipboard">Load from clipboard</button>
+			<button class="pts-button" id="btn_replace">Replace</button>
+		</div>
+		<input type="text" aria-hidden="true" id="clip" style="display: none" />
 	</body>
 	<script src="../scripts/vendor/ace/ace.js"></script>
 	<script src="../scripts/vendor/ace/mode-html.js"></script>

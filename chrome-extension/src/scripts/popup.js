@@ -10,22 +10,21 @@ const editor = ace.edit("editor");
 
 const result = null;
 const textarea = document.getElementById('clip');
-const use_clipboard_btn = document.getElementById('use_clipboard');
+const button_clipboard = document.getElementById('btn_load_clipboard');
+const button_replace = document.getElementById('btn_replace');
 
-use_clipboard_btn.addEventListener('click', () => {
+button_clipboard.addEventListener('click', () => {
 
     const clipboard = getClipboard();
 
     if(clipboard !== '' ) {
-        sendExtensionMessage({
-            element: target.value,
-            content: clipboard
-        });
+        // Set contents of editor to the clipboard value.
+        editor.setValue(clipboard, 0);
     }
 
 });
 
-document.getElementById('send_message').addEventListener('click', () => {
+button_replace.addEventListener('click', () => {
 
     const target = document.getElementById('target');
 
@@ -42,7 +41,7 @@ function sendExtensionMessage(message) {
 }
 
 function getClipboard() {
-    let result = null;
+    let result = '';
     const textarea = document.getElementById('clip');
           textarea.value = '';
           textarea.select();
