@@ -1,10 +1,43 @@
-<label for="replacement">
-	<span class="label-message">Replacement HTML</span>
-	<textarea name="replacement" id="replacement" cols="30" rows="10"><p>Hello world!</p></textarea>
-</label>
-<label for="target">
-	<span class="label-message">Target element</span>
-	<input type="text" name="target" id="target" placeholder="div#element" value="#example" />
-</label>
-<button class="pts-button" id="send_message">Send Message</button>
-<script src="../scripts/popup.js"></script>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+		      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
+	<body class="extension-container">
+		<style>
+			html,body {
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+			.extension-container {
+				width: 600px;
+				margin: 0;
+				padding: 5px;
+			}
+
+			#editor {
+				position: relative;
+				width: 100%;
+				height: 300px;
+			}
+		</style>
+		<div id="editor">some text</div>
+		<label for="clip"></label>
+		<input type="text" id="clip" />
+		<label for="target">
+			<span class="label-message">Target element</span>
+			<input type="text" name="target" id="target" placeholder="div#element" value="#example" />
+		</label>
+		<button id="use_clipboard">Use Clipboard</button>
+		<button class="pts-button" id="send_message">Replace</button>
+	</body>
+	<script src="../scripts/vendor/ace/ace.js"></script>
+	<script src="../scripts/vendor/ace/mode-html.js"></script>
+	<script src="../scripts/vendor/ace/mode-javascript.js"></script>
+	<script src="../scripts/popup.js"></script>
+</html>

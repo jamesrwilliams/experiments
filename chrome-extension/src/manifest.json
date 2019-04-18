@@ -4,7 +4,7 @@
   "description": "Dynamically replace contents of a page without using developer tools!",
   "manifest_version": 2,
   "homepage_url": "https://github.com/jamesrwilliams",
-  "permissions": ["storage"],
+  "permissions": ["storage", "clipboardRead"],
   "background": {
     "scripts": ["scripts/background.js"],
     "persistent": true
