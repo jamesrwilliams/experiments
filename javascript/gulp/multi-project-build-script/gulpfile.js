@@ -33,7 +33,7 @@ gulp.task('build:combine', () => {
     return gulp.src('partners/**/**/src/*.html', { base: '.' })
         .pipe(include())
         .pipe(rename((path) => {
-            path.basename = 'banner-output';
+            path.basename = path.basename + '-output';
             path.dirname = path.dirname.substring(0, path.dirname.lastIndexOf("/") + 1);
         }))
         .pipe(gulp.dest('./'));
@@ -44,5 +44,5 @@ gulp.task('build', gulp.series('build:less', 'build:js', 'build:combine'));
 gulp.task('watch', () => {
     gulp.watch(['partners/**/**/src/banner.js'], gulp.series('build:js', 'build:combine'));
     gulp.watch(['partners/**/**/src/banner.less'], gulp.series('build:less', 'build:combine'));
-    gulp.watch(['partners/**/**/src/banner.html'], gulp.series('build:combine'));
+    gulp.watch(['partners/**/**/src/*.html'], gulp.series('build:combine'));
 });
