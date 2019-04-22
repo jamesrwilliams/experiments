@@ -1,0 +1,10 @@
+/*
+Gets rid of the annoying outline for mouse users but
+preserves it for keyboard users, and is ignored by
+browsers that don’t support :focus-visible.
+
+From Lea Verou (@LeaVerou)
+@link https://twitter.com/leaverou/status/1045768279753666562?s=21
+*/
+
+.element:focus:not(:focus-visible) { outline: none }
