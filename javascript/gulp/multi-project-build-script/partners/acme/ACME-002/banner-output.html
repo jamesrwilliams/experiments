@@ -1,0 +1,192 @@
+<style>
+	.swa-1904-accelerator {
+		box-sizing: border-box;
+		background: linear-gradient(180deg, #08196E 0%, #1F317E 100%);
+		position: relative;
+		font-size: 16px;
+		margin-top: 30px;
+		-webkit-font-smoothing: antialiased;
+	}
+	@media (min-width: 1200px) {
+		.swa-1904-accelerator {
+			margin-bottom: 20px;
+		}
+	}
+	.swa-1904-accelerator::before {
+		content: '';
+		display: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		background-image: url(https://points-ebgt.s3.amazonaws.com/southwest/promo_banners/swa-2019-04-accelerator-accent.png);
+		background-repeat: no-repeat;
+		background-position: left top;
+		background-size: cover;
+		width: 34%;
+		pointer-events: none;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator::before {
+			display: block;
+		}
+	}
+
+	.swa-1904-accelerator .swa-boost-buttons {
+		margin-right: 0;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator .swa-boost-buttons {
+			margin-right: -80px;
+		}
+	}
+	.swa-1904-accelerator .content-container {
+		max-width: 100%;
+		padding: 20px 15px 20px;
+		position: relative;
+		z-index: 1000;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator .content-container {
+			max-width: 70%;
+			padding: 20px 15px 0 20px;
+		}
+	}
+	.swa-1904-accelerator p { margin: 0; }
+	.swa-1904-accelerator .highlight { color: #FCBF26; }
+	.main .bgt-transaction-content button.swa-1904-accelerator_button {
+		color: #111B40;
+		font-size: 16px;
+		width: 100%;
+		max-width: 100%;
+		font-weight: 400;
+		padding: 10px;
+		border-radius: 2px;
+		background-color: #FCBF26;
+		transition: border 1s ease;
+		text-transform: none;
+	}
+	@media (min-width: 715px) {
+		.main .bgt-transaction-content button.swa-1904-accelerator_button {
+			font-weight: bold;
+		}
+	}
+	.main .bgt-transaction-content button.swa-1904-accelerator_button:hover {
+		border-color: #111B40;
+	}
+
+	.main .bgt-transaction-content .bgt-offer-member .bgt-offer-member-balance { display:none; }
+	.main .bgt-transaction-content .bgt-transaction-steps .bgt-transaction-step-one { padding: 9px 20px 2px; }
+
+	.main .bgt-transaction-content button.swa-1904-accelerator_button .button-note {
+		display: inline-block;
+	}
+	@media (min-width: 715px) {
+		.main .bgt-transaction-content button.swa-1904-accelerator_button .button-note {
+			display: none;
+		}
+	}
+	.swa-1904-accelerator .button-con {
+		display: block;
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator .button-con {
+			max-width: 32%;
+			display: inline-block;
+			margin-right: 10px;
+			margin-bottom: 0;
+		}
+	}
+	.swa-1904-accelerator .button-con p {
+		color: white;
+		padding: 10px 0 20px;
+		text-align: center;
+		display: none;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator .button-con p {
+			display: block;
+		}
+	}
+	.swa-1904-accelerator .swa-boost-text-intro h2 {
+		margin: 0 0 10px 0;
+		text-align: center;
+		color: white;
+		font-family: "Helvetica Neue", sans-serif;
+		font-size: 29px;
+		font-weight: bold;
+		letter-spacing: -0.17px;
+		line-height: 35px;
+	}
+	@media (min-width: 715px) {
+		.swa-1904-accelerator .swa-boost-text-intro h2 {
+			text-align: inherit;
+			margin: 0 25px 20px 0;
+		}
+	}
+</style>
+
+<div class="offer-select-banner swa-1904-accelerator">
+	<div class="content-container">
+		<div class="swa-boost-text-intro">
+			<h2><span id="customer_name">Hello</span>, accelerate your balance with up to a <span class="highlight">30%&nbsp;discount</span>!</h2>
+		</div>
+		<div class="swa-boost-buttons">
+			<div class="button-con">
+				<button class="swa-1904-accelerator_button button offer-0">
+					Buy 2,000 points <span class="button-note"><strong>- Save 20%</strong></span>
+				</button>
+				<p>Save <strong>20%</strong></p>
+			</div>
+			<div class="button-con">
+				<button class="swa-1904-accelerator_button button offer-1">
+					Buy 5,000 points <span class="button-note"><strong>- Save 25%</strong></span>
+				</button>
+				<p>Save <strong>25%</strong></p>
+			</div>
+			<div class="button-con">
+				<button class="swa-1904-accelerator_button button offer-2">
+					Buy 10,000 points <span class="button-note"><strong>- Save 30%</strong></span>
+				</button>
+				<p>Save <strong>30%</strong></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type = "text/javascript" >
+
+    $(document).ready(function() {
+
+        var $name = document.getElementById('customer_name');
+        var storefront_name = storefront.data('user').firstName;
+
+        if ( storefront_name !== '' ) {
+            $name.innerText = storefront_name;
+        }
+
+    });
+
+    $('.offer-select-banner .button').click(function(e) {
+
+        var index = $('.offer-select-banner .button').parent().children('button').index(e.target);
+
+        $('#bgt-offer-dropdown>option:eq(0)').attr('selected', false);
+        $('.offer-select-banner .button').removeClass('active');
+        $(this).addClass('active');
+        $('#bgt-offer-dropdown').addClass('focus-border');
+        if (index === 0) {
+            $('#bgt-offer-dropdown').prop('selectedIndex', 1).trigger('change');
+        } else if (index === 1) {
+            $('#bgt-offer-dropdown').prop('selectedIndex', 2).trigger('change');
+        } else if (index === 2) {
+            $('#bgt-offer-dropdown').prop('selectedIndex', 3).trigger('change');
+        } else {
+            $('#bgt-offer-dropdown>option:eq(0)').attr('selected', false);
+        }
+    });
+
+</script>

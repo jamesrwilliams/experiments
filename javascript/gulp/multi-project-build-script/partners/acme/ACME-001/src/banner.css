@@ -1,0 +1,56 @@
+body {
+  font: 15px Arial, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.banner-container {
+  position: relative;
+}
+.banner-container img {
+  width: 100%;
+  height: auto;
+}
+.clock-container {
+  background: #304CB2;
+  font-size: 0;
+  position: relative;
+  color: #ffffff;
+}
+.clock-container * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.clock-container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.clock-container .clock-face,
+.clock-container .clock-title {
+  float: left;
+  width: 50%;
+}
+.clock-container .clock-title {
+  padding: 10px 0 10px 35px;
+  font-size: 24px;
+}
+.clock-container .clock-face {
+  padding-right: 35px;
+  padding-top: 5px;
+}
+.clock-container .clock-digit {
+  text-align: center;
+  font-size: 12px;
+  width: 33.33%;
+  display: inline-block;
+}
+.clock-container .clock-digit-value {
+  font-size: 24px;
+  display: block;
+  padding: 2px 3px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.clock-container .clock-digit-label {
+  display: block;
+}
