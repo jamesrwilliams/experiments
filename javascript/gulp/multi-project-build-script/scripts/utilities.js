@@ -6,7 +6,7 @@ exports.partners = function () {
     return new Promise((resolve, reject) => {
 
         const baseDir = './partners';
-        const config_file = 'partner-config.json';
+        const config_file = 'partner-config.yml';
 
         let partners_list = [];
 

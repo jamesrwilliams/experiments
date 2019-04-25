@@ -6,7 +6,7 @@ const debug = require('gulp-debug');
 const autoPrefixer = require('gulp-autoprefixer');
 const include = require('gulp-include');
 
-// const utilities = require('./scripts/utilities');
+// const utilities = require('./gulp/utilities');
 
 gulp.task('build:less', () => {
     return gulp.src('partners/**/**/src/*.less', { base: '.' })
