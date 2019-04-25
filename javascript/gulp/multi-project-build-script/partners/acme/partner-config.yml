@@ -1,9 +1,0 @@
-name: "ACME",
-config-name: ["acme-rewards"],
-stylesheets: [],
-types:
-  iframe:
-    width: "600px"
-  standalone: true,
-  inline: true
-

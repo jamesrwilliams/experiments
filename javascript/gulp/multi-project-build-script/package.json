@@ -19,7 +19,7 @@
     "gulp-rename": "^1.4.0"
   },
   "scripts": {
-    "start": "cd server && ng serve",
+    "start" : "cd file-server && node server.js | cd preview-server && ng serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

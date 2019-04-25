@@ -1,0 +1,15 @@
+<app-partner-header [title]="project"></app-partner-header>
+
+<h1>This is the <code>PartnerProject Page</code></h1>
+
+<p>This page needs to do the following:</p>
+
+<!-- Inject HTML HERE -->
+<iframe src="http://localhost:4242/partners/acme/ACME-002/banner-output.html" frameborder="0"></iframe>
+<!-- END HTML -->
+
+<ul>
+  <li>Display a viewer for the selected project</li>
+</ul>
+
+<pre>{{ project | json }}</pre>

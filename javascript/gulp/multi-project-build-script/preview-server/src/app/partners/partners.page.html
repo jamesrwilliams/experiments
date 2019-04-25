@@ -1,0 +1,11 @@
+<app-partner-header title="Points Promotional Banners"></app-partner-header>
+
+<button mat-button (click)="ping()">Test</button>
+
+<pre>{{ data | json }}</pre>
+
+<mat-list>
+  <h3 mat-subheader>Partners</h3>
+  <mat-list-item *ngFor="let partner of partners" [routerLink]="partner.key">{{ partner | json }}</mat-list-item>
+</mat-list>
+

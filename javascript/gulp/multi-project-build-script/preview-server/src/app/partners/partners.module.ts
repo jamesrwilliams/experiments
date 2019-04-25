@@ -6,14 +6,22 @@ import { PartnersPage } from './partners.page';
 import { PartnerDetailComponent } from './partner-detail/partner-detail.component';
 import { PartnerProjectComponent } from './partner-project/partner-project.component';
 
+import { MatButtonModule, MatToolbarModule, MatListModule } from '@angular/material';
+import { PartnerHeaderComponent } from './partner-header/partner-header.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     PartnersPage,
     PartnerDetailComponent,
-    PartnerProjectComponent
+    PartnerProjectComponent,
+    PartnerHeaderComponent
   ],
   imports: [
     CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
     RouterModule.forChild([
       {
         path: '',
