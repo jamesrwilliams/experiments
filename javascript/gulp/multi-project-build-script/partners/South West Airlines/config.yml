@@ -1,9 +1,8 @@
-name: "Apple"
-configName: ["apple"]
+name: "South West Airlines"
+configName: ["swa"]
 stylesheets: []
 types:
   iframe:
     width: "600px"
   standalone: true
   inline: true
-

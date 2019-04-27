@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PartnersService } from "./partners.service";
 import { FileServerService } from "../file-server.service";
 
 @Component({
@@ -10,19 +9,12 @@ import { FileServerService } from "../file-server.service";
 export class PartnersPage {
 
   partners;
-  data;
 
   constructor(
       public fs: FileServerService
   ) {
-    this.fs.query('partners').subscribe((data) => {
+    this.fs.getPartners().subscribe((data) => {
       this.partners = data;
     });
-  }
-
-  ping() {
-      this.fs.query('partners').subscribe((data) => {
-          this.data = data;
-      });
   }
 }

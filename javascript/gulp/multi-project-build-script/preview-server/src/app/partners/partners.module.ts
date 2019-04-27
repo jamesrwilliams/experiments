@@ -6,16 +6,14 @@ import { PartnersPage } from './partners.page';
 import { PartnerDetailComponent } from './partner-detail/partner-detail.component';
 import { PartnerProjectComponent } from './partner-project/partner-project.component';
 
-import { MatButtonModule, MatToolbarModule, MatListModule } from '@angular/material';
-import { PartnerHeaderComponent } from './partner-header/partner-header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule, MatToolbarModule, MatListModule, MatIconModule } from '@angular/material';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     PartnersPage,
     PartnerDetailComponent,
-    PartnerProjectComponent,
-    PartnerHeaderComponent
+    PartnerProjectComponent
   ],
   imports: [
     CommonModule,
@@ -26,17 +24,19 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path: '',
         children: [
-          { path: '', component: PartnersPage },
+          {path: '', component: PartnersPage},
           {
             path: ':id',
             children: [
-              { path: '', component: PartnerDetailComponent, },
-              { path: ':id', component: PartnerProjectComponent }
+              {path: '', component: PartnerDetailComponent,},
+              {path: ':id', component: PartnerProjectComponent}
             ]
           }
         ]
       }
     ]),
+    FormsModule,
+    MatIconModule,
   ],
 })
 export class PartnersModule { }

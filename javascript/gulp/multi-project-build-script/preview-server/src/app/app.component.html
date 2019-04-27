@@ -1,8 +1,8 @@
 <mat-sidenav-container class="main">
-	<mat-sidenav class="sidebar" mode="side" opened>
-		<h2>Documentation</h2>
+	<mat-sidenav class="sidebar" mode="side">
 	</mat-sidenav>
 	<mat-sidenav-content>
+    <app-partner-header [title]="title"></app-partner-header>
 		<router-outlet></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>

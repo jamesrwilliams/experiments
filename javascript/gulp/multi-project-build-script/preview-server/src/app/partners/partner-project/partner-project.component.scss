@@ -1,0 +1,22 @@
+main {
+  background: #cccccc;
+  text-align: center;
+  height: calc(100% - 64px);
+}
+
+iframe {
+  margin: 0 auto;
+  height: 99%;
+  transition: width 1s ease;
+}
+
+.footer-toolbar {
+  position: absolute;
+  bottom: 0;
+}
+
+#refresh {
+  position: absolute;
+  right: 15px;
+  bottom: 75px;
+}

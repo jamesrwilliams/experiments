@@ -5,7 +5,6 @@ const app = express();
 const port = 4242;
 const location = path.resolve(__dirname + '/../');
 
-const config = require('./scripts/readConfig');
 const stats = require('./scripts/project-stats');
 
 app.use(function(req, res, next) {
@@ -15,38 +14,36 @@ app.use(function(req, res, next) {
 });
 
 app.use('/static/', express.static(location));
-app.use('/api/partners', (req, res) => {
 
-    const data = stats.partners();
-    console.log(data);
-
-    res.json(data);
+// Get specific project from partner.
+app.use('/api/partners/**/projects/**', (req, res) => {
+    res.json(stats.getProject(req.params[0], req.params[2]));
 });
-app.use('/api/', (req, res) => {
 
-    let pathName = req.originalUrl;
-    let pathArray = pathName.split('/');
+// Get specific partners projects.
+app.use('/api/partners/**/projects', (req, res) => {
+    res.json(stats.getProjects(req.params[0]));
+});
 
-    let partner_name = pathArray[2];
-    let project_key = pathArray[3];
-
-    if ( project_key && partner_name ) {
-        let debug = config.debug(partner_name, project_key);
-
-        res.json({
-            partner_name,
-            project_key,
-            debug
-        });
+// Get specific partner.
+app.use('/api/partners/**', (req, res) => {
+    const query = req.params[0];
+    if( query !== '' ) {
+        const partner = stats.getPartner(query);
+        res.json(partner);
     } else {
-        res.json({
-            'hello': 'world'
-        });
+        res.json('Error: Please provide a partner string.');
     }
 });
 
+// Get all partners
+app.use('/api/partners', (req, res) => {
+    res.json(stats.getPartners());
+});
+
+// JSON Errors
 app.use(function (error, req, res, next) {
     res.status(500).json(error);
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port);

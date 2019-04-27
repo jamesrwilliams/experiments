@@ -6,8 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'server';
+  title = 'Promo Team';
 
   constructor(){}
+
+  updatePageTitle(title) {
+    this.title = title;
+  }
+
 
 }

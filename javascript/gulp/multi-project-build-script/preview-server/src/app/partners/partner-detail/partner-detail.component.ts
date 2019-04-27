@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import {PartnersService} from "../partners.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FileServerService} from "../../file-server.service";
 
 @Component({
   selector: 'app-partner-detail',
@@ -10,19 +10,30 @@ import {PartnersService} from "../partners.service";
 export class PartnerDetailComponent implements OnInit {
 
   partner;
+  projects;
 
   constructor(
     public route: ActivatedRoute,
-    public partnerService: PartnersService,
+    public fs: FileServerService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((data) => {
-      this.partnerService.getPartner(data.id).then(res => {
-        this.partner = res;
+    this.route.params.subscribe((params) => {
+      this.fs.getPartner(params.id).subscribe((partner: any) => {
+        if(partner === null) {
+          // TODO Handler for errors.
+          this.router.navigate(['/partners']);
+        } else {
+          this.partner = partner;
+
+          // Need file path here not the name
+          this.fs.getProjects(partner.path[1]).subscribe(projects => {
+            this.projects = projects;
+          });
+        }
       });
     });
-
   }
 
 }

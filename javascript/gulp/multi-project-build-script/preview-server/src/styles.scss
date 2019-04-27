@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 $points_blue: #43c8f6;
 
@@ -10,10 +10,6 @@ body {
 	height: 100%;
 }
 
-a.btn {
-  background: $points_blue;
-}
-
 .main {
 	height: 100%;
 }
@@ -21,6 +17,7 @@ a.btn {
 pre {
   padding: 15px;
   background: #eee;
+  text-align: left;
   font-family: monospace;
 }
 

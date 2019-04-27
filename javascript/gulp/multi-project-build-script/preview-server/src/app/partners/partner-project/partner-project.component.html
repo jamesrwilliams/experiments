@@ -1,15 +1,20 @@
-<app-partner-header [title]="project"></app-partner-header>
-
-<h1>This is the <code>PartnerProject Page</code></h1>
-
-<p>This page needs to do the following:</p>
-
 <!-- Inject HTML HERE -->
-<iframe src="http://localhost:4242/partners/acme/ACME-002/banner-output.html" frameborder="0"></iframe>
+<main>
+  <button id="refresh" mat-fab color="primary" (click)="refreshIframe()">
+    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  </button>
+
+<!--  <pre>{{ project | json }}</pre>-->
+<!--  <pre>{{ partner | json }}</pre>-->
+
+  <iframe [src]="sanitize(projectURL)" id="projectIframe" frameborder="0"></iframe>
+  <mat-toolbar color="primary" class="footer-toolbar">
+    <mat-toolbar-row>
+      <span>Options and other things go here</span>
+      <select (change)="updateIframe($event.target.value)">
+        <option *ngFor="let breakpoint of partner.breakpoints" value="{{ breakpoint.width }}">{{ breakpoint.name }}</option>
+      </select>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</main>
 <!-- END HTML -->
-
-<ul>
-  <li>Display a viewer for the selected project</li>
-</ul>
-
-<pre>{{ project | json }}</pre>

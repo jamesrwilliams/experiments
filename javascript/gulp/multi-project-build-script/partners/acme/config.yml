@@ -1,6 +1,12 @@
 name: "ACME"
-config-name: ["acme-rewards"]
+configName: ["acme"]
 stylesheets: []
+breakpoints:
+  - width: 400
+    name: mobile
+  - width: 700
+    name: desktop
+mockStorefrontAPI: true
 types:
   iframe:
     width: "600px"

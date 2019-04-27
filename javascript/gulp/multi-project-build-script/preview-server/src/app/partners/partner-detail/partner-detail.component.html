@@ -1,14 +1,20 @@
-<app-partner-header [title]="partner?.name"></app-partner-header>
 <section class="page-container">
-	<p>This page needs to do the following:</p>
 
-	<ul>
-	  <li>Render the partner config file</li>
-	  <li>Display a searchable list of sub-projects</li>
-	</ul>
+  <h1>Partner: {{ partner?.name }}</h1>
 
-	<mat-list>
-	  <h3 mat-subheader>Banner Projects</h3>
-	  <mat-list-item [routerLink]="'SOW-0000'">Example Link</mat-list-item>
-	</mat-list>
+  <p>Partner:</p>
+  <pre>{{ partner | json }}</pre>
+
+  <p>Projects</p>
+  <pre>{{ projects | json }}</pre>
+
+  <section *ngIf="projects?.length > 0">
+    <mat-action-list>
+      <h3 mat-subheader>Banner Projects</h3>
+      <button mat-list-item *ngFor="let project of projects" [routerLink]="project.path[2]">
+        <h4 mat-line>{{ project.name }}</h4>
+        <p mat-line *ngIf="project.error" class="project-error">{{ project.error }}</p>
+      </button>
+    </mat-action-list>
+  </section>
 </section>
