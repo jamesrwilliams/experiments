@@ -11,7 +11,7 @@
   <section *ngIf="projects?.length > 0">
     <mat-action-list>
       <h3 mat-subheader>Banner Projects</h3>
-      <button mat-list-item *ngFor="let project of projects" [routerLink]="project.path[2]">
+      <button mat-list-item *ngFor="let project of projects" (click)="linkToProject(project)">
         <h4 mat-line>{{ project.name }}</h4>
         <p mat-line *ngIf="project.error" class="project-error">{{ project.error }}</p>
       </button>

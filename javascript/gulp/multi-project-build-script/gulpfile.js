@@ -18,7 +18,7 @@ gulp.task('build:less', () => {
 });
 
 gulp.task('build:js', () => {
-    return gulp.src('partners/**/**/src/*.js', { base: '.' })
+    return gulp.src('partners/**/**/src/banner.js', { base: '.' })
         .pipe(babel({
             presets: ['@babel/env']
         }))

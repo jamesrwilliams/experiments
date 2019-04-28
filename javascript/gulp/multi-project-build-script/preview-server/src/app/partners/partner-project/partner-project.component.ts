@@ -13,7 +13,9 @@ export class PartnerProjectComponent implements OnInit {
 
   project;
   partner;
-  projectURL: string;
+  projectURL;
+
+  API_BASE_URL = 'http://localhost:4242/static/';
 
   constructor(
     public route: ActivatedRoute,
@@ -24,29 +26,33 @@ export class PartnerProjectComponent implements OnInit {
 
   ngOnInit() {
 
-    this.projectURL = 'http://localhost:4242/static/partners/acme/ACME-002/banner-output.html';
-
     const location = this.router.url.split('/');
     const partnerID = location[2];
 
     this.route.params.subscribe((data) => {
 
       this.fs.getProject(partnerID, data.id).subscribe((project: any) => {
+        console.log(project);
         this.project = project;
+        this.projectURL = this.sanitize(this.API_BASE_URL + this.project.html[0]);
       });
 
       this.fs.getPartner(partnerID).subscribe((partner: any) => {
+        console.log(partner);
         this.partner = partner;
-        // Set the iframe's default width.
-        this.setIframeWidth(partner.breakpoints[0].width);
+        this.updateIframeWidth(partner.breakpoints[0].width);
       });
 
     });
   }
 
-  updateIframe(width: number) {
+  updateIframeWidth(width: number) {
+
     const element = document.getElementById('projectIframe') as HTMLElement;
-          element.style.width = width + 'px';
+
+    if( element ) {
+      element.style.width = width + 'px';
+    }
   }
 
   sanitize(url:string){
@@ -58,8 +64,14 @@ export class PartnerProjectComponent implements OnInit {
     element.style.width = 'red';
   }
 
-  setIframeWidth(width) {
-    const element = document.getElementById('projectIframe') as HTMLElement;
-          element.style.width = width + 'px';
+  updateSourceFile(file) {
+    console.log(file);
+  }
+
+  displayFileName(filePath) {
+
+    let parts = filePath.split('/');
+
+    return parts[parts.length - 1];
   }
 }

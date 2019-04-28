@@ -20,7 +20,23 @@ exports.getProject = function(partner, project) {
     return getProject(partner, project);
 };
 
-function getPartners(path) {
+function getProjectHTMLFiles(partner, project) {
+
+    const path = join(partnerPath, partner, project);
+    const splitPoint = "multi-project-build-script";
+    const relativeFilePath = path.substring(path.indexOf(splitPoint) + splitPoint.length + 1);
+
+    return readdirSync(path).map((fileName) => {
+        if( fileName.indexOf('.html') > - 1 ) {
+            return join(relativeFilePath, fileName);
+        } else {
+            return false;
+        }
+    }).filter(e => e !== false);
+
+}
+
+function getPartners(path, targetFile = 'config.yml') {
 
     const directories = readdirSync(path).map((check) => {
 
@@ -34,16 +50,16 @@ function getPartners(path) {
 
         if ( is_directory ) {
             try {
-                configFile = readFileSync(dir_name + `/config.yml`, 'utf8');
+                configFile = readFileSync(dir_name + `/${targetFile}`, 'utf8');
                 try {
                     let parsedConfigFile = yaml.safeLoad(configFile);
-                    parsedConfigFile['path'] = relativeFilePathParts;
+                        parsedConfigFile['path'] = relativeFilePathParts;
                     return parsedConfigFile;
                 } catch (e) {
-                    console.error(`[ERROR] Unreadable config.yml in "${relativeFilePath}". Please make sure the syntax is correct.`);
+                    console.error(`[ERROR] Unreadable ${targetFile} in "${relativeFilePath}".`);
                 }
             } catch (e) {
-                console.error(`[ERROR] Missing project config file for "${relativeFilePath}"`);
+                console.error(`[ERROR] Missing project ${targetFile} file for "${relativeFilePath}"`);
                 return { name: relativeFilePath, 'error': 'Missing config file' };
             }
             return (configFile ? configFile : false );
@@ -54,6 +70,7 @@ function getPartners(path) {
 
     return directories.filter(e => e !== false);
 }
+
 function getProject(partner, project) {
 
     let input = join(partnerPath, partner, project);
@@ -62,18 +79,14 @@ function getProject(partner, project) {
     try {
         configFile = readFileSync(input + `/config.yml`, 'utf8');
         try {
-            return yaml.safeLoad(configFile);
+            const configYaml = yaml.safeLoad(configFile);
+                  configYaml['html'] = getProjectHTMLFiles(partner, project);
+            return configYaml;
         } catch (e) {
             console.error(`[ERROR] Unreadable config.yml in "${configFile}". Please make sure the syntax is correct.`);
         }
     } catch (e) {
         console.error(`[ERROR] Missing project config file for "${configFile}"`);
         return { name: configFile, 'error': 'Missing config file' };
-    }
-}
-function parsePath(pathArray) {
-    let object = {
-        partner: pathArray[0],
-        project: pathArray[1]
     }
 }

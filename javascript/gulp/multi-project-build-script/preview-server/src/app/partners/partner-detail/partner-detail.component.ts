@@ -25,6 +25,7 @@ export class PartnerDetailComponent implements OnInit {
           // TODO Handler for errors.
           this.router.navigate(['/partners']);
         } else {
+
           this.partner = partner;
 
           // Need file path here not the name
@@ -34,6 +35,15 @@ export class PartnerDetailComponent implements OnInit {
         }
       });
     });
+  }
+
+  linkToProject(partner) {
+    if ( partner.path !== undefined ) {
+      if( partner.path.length >= 2 ) {
+        const dest = partner.path[2];
+        this.router.navigate([dest], {relativeTo: this.route});
+      }
+    }
   }
 
 }

@@ -5,6 +5,7 @@ body {
 }
 .banner-container {
   position: relative;
+  background: red;
 }
 .banner-container img {
   width: 100%;

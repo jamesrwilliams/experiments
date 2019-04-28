@@ -1,19 +1,32 @@
 <!-- Inject HTML HERE -->
 <main>
-  <button id="refresh" mat-fab color="primary" (click)="refreshIframe()">
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  <button id="refresh" mat-fab color="accent" (click)="refreshIframe()">
+    <mat-icon aria-label="Example icon-button with a heart icon">cached</mat-icon>
   </button>
-
-<!--  <pre>{{ project | json }}</pre>-->
-<!--  <pre>{{ partner | json }}</pre>-->
-
-  <iframe [src]="sanitize(projectURL)" id="projectIframe" frameborder="0"></iframe>
+  <iframe [src]="projectURL" id="projectIframe" frameborder="0"></iframe>
   <mat-toolbar color="primary" class="footer-toolbar">
     <mat-toolbar-row>
-      <span>Options and other things go here</span>
-      <select (change)="updateIframe($event.target.value)">
-        <option *ngFor="let breakpoint of partner.breakpoints" value="{{ breakpoint.width }}">{{ breakpoint.name }}</option>
-      </select>
+      <span>{{ project?.name }} | {{ project?.deadline }}</span>
+      <span class="toolbar-spacer"></span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <mat-form-field>
+        <mat-label>Target</mat-label>
+        <mat-select (selectionChange)="updateIframeWidth($event.value)">
+          <mat-option *ngFor="let breakpoint of partner?.breakpoints" [value]="breakpoint.width">
+            {{ breakpoint.name  }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="toolbar-spacer"></span>
+      <mat-form-field>
+        <mat-label>Source File</mat-label>
+        <mat-select (selectionChange)="updateSourceFile($event.value)">
+          <mat-option *ngFor="let file of project?.html" [value]="file">
+            {{ displayFileName(file) }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-toolbar-row>
   </mat-toolbar>
 </main>

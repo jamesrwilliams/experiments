@@ -41,6 +41,10 @@ app.use('/api/partners', (req, res) => {
     res.json(stats.getPartners());
 });
 
+app.use('/debug/', (req, res) => {
+   res.json(stats.getProjectHTMLFiles('acme', 'ACME-001'));
+});
+
 // JSON Errors
 app.use(function (error, req, res, next) {
     res.status(500).json(error);

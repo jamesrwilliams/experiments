@@ -6,6 +6,7 @@ body {
 }
 .banner-container {
   position: relative;
+  background: red;
 }
 .banner-container img {
   width: 100%;
@@ -58,49 +59,36 @@ body {
 
 </style>
 <div class="banner-container">
-	<h1>Banner 1!</h1>
+	<div class="offer-select-banner swa-1904-accelerator">
+		<div class="content-container">
+			<div class="swa-boost-text-intro">
+				<h2><span id="customer_name">Hello</span>, accelerate your balance with up to a <span class="highlight">30%&nbsp;discount</span>!</h2>
+			</div>
+			<div class="swa-boost-buttons">
+				<div class="button-con">
+					<button class="swa-1904-accelerator_button button offer-0">
+						Buy 2,000 points <span class="button-note"><strong>- Save 20%</strong></span>
+					</button>
+					<p>Save <strong>20%</strong></p>
+				</div>
+				<div class="button-con">
+					<button class="swa-1904-accelerator_button button offer-1">
+						Buy 5,000 points <span class="button-note"><strong>- Save 25%</strong></span>
+					</button>
+					<p>Save <strong>25%</strong></p>
+				</div>
+				<div class="button-con">
+					<button class="swa-1904-accelerator_button button offer-2">
+						Buy 10,000 points <span class="button-note"><strong>- Save 30%</strong></span>
+					</button>
+					<p>Save <strong>30%</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script>
 "use strict";
 
-var deadline = new Date(2019, 3, 30, 18, 59, 0, 0);
-initializeClock('countdown-clock', deadline);
-
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor(t / 1000 % 60);
-  var minutes = Math.floor(t / 1000 / 60 % 60);
-  var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  var hours = Math.floor(t / (1000 * 60 * 60));
-  return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-}
-
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id); // const daysSpan = clock.querySelector('.clock-digit-days .clock-digit-value');
-
-  var hoursSpan = clock.querySelector('.clock-digit-hours .clock-digit-value');
-  var minutesSpan = clock.querySelector('.clock-digit-minutes .clock-digit-value');
-  var secondsSpan = clock.querySelector('.clock-digit-seconds .clock-digit-value');
-
-  function updateClock() {
-    var t = getTimeRemaining(endtime); // daysSpan.innerHTML = ('0' + t.days).slice(-2);
-
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    hoursSpan.innerHTML = t.hours > 100 ? t.hours : ('0' + t.hours).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
-  }
-
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
-}
+console.log('Banner Called');
 </script>
