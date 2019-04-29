@@ -1,9 +1,0 @@
-name: "Apple"
-configName: ["apple"]
-stylesheets: []
-types:
-  iframe:
-    width: "600px"
-  standalone: true
-  inline: true
-

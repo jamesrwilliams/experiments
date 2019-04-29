@@ -6,7 +6,7 @@ import { PartnersPage } from './partners.page';
 import { PartnerDetailComponent } from './partner-detail/partner-detail.component';
 import { PartnerProjectComponent } from './partner-project/partner-project.component';
 
-import { MatButtonModule, MatToolbarModule, MatListModule, MatIconModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatListModule, MatIconModule, MatSelectModule, MatChipsModule } from '@angular/material';
 import { FormsModule } from "@angular/forms";
 
 @NgModule({
@@ -21,6 +21,7 @@ import { FormsModule } from "@angular/forms";
     MatButtonModule,
     MatListModule,
     MatSelectModule,
+    MatChipsModule,
     RouterModule.forChild([
       {
         path: '',

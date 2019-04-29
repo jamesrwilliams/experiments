@@ -1,14 +1,28 @@
 <section class="page-container">
+  <section class="partner-info">
+    <h1>Partner: {{ partner?.name }}</h1>
 
-  <h1>Partner: {{ partner?.name }}</h1>
+    <mat-chip-list>
+      <p>Config name:</p>
+      <mat-chip *ngFor="let config of partner.configName" disabled><code>{{ config }}</code></mat-chip>
+    </mat-chip-list>
 
-  <p>Partner:</p>
-  <pre>{{ partner | json }}</pre>
+    <mat-chip-list>
+      <p>Storefront types:</p>
+      <mat-chip *ngFor="let storefronts of partner.storefronts" disabled>{{ storefronts }}</mat-chip>
+    </mat-chip-list>
 
-  <p>Projects</p>
-  <pre>{{ projects | json }}</pre>
-
-  <section *ngIf="projects?.length > 0">
+    <p>Links:</p>
+    <ul>
+      <li *ngFor="let link of partner.links"><a target="_blank" href="{{ link.url }}">{{ link.name }}</a></li>
+    </ul>
+  </section>
+  <section class="partner-projects">
+    <h2 [ngPlural]="projects.length">
+      <ng-template ngPluralCase="=0">{{ projects.length }} projects.</ng-template>
+      <ng-template ngPluralCase="=1">{{ projects.length }} project.</ng-template>
+      <ng-template ngPluralCase="=2">{{ projects.length }} projects.</ng-template>
+    </h2>
     <mat-action-list>
       <h3 mat-subheader>Banner Projects</h3>
       <button mat-list-item *ngFor="let project of projects" (click)="linkToProject(project)">

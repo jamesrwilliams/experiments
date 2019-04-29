@@ -1,3 +1,24 @@
 .page-container {
+  display: flex;
+  height: calc(100% - 64px);
+}
+
+.partner-info,
+.partner-projects {
+
+}
+
+.partner-info {
+  width: 40%;
   padding: 15px;
+}
+
+.partner-projects {
+
+  h2 {
+    padding: 15px;
+  }
+
+  width: 50%;
+  border-left: 1px solid #ccc;
 }

@@ -1,0 +1,6 @@
+<mat-toolbar>
+  <button [disabled]="!canGoBack" mat-flat-button color="primary" (click)="backClicked()">Back</button>
+  <span class="toolbar-spacer"></span>
+  <span>{{ title }}</span>
+  <span class="toolbar-spacer"></span>
+</mat-toolbar>

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import { DomSanitizer } from '@angular/platform-browser';
-import { FileServerService } from "../../file-server.service";
-import {filter, partition} from "rxjs/operators";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {DomSanitizer} from '@angular/platform-browser';
+import {FileServerService} from "../../file-server.service";
 
 @Component({
   selector: 'app-partner-project',
@@ -14,6 +13,8 @@ export class PartnerProjectComponent implements OnInit {
   project;
   partner;
   projectURL;
+  selectedHTMLFile: string;
+  currentBreakpoint: number;
 
   API_BASE_URL = 'http://localhost:4242/static/';
 
@@ -32,15 +33,15 @@ export class PartnerProjectComponent implements OnInit {
     this.route.params.subscribe((data) => {
 
       this.fs.getProject(partnerID, data.id).subscribe((project: any) => {
-        console.log(project);
         this.project = project;
-        this.projectURL = this.sanitize(this.API_BASE_URL + this.project.html[0]);
+        this.selectedHTMLFile = this.project.html[0];
+        this.projectURL = this.sanitize(this.API_BASE_URL + this.selectedHTMLFile);
       });
 
       this.fs.getPartner(partnerID).subscribe((partner: any) => {
-        console.log(partner);
         this.partner = partner;
-        this.updateIframeWidth(partner.breakpoints[0].width);
+        this.currentBreakpoint = partner.breakpoints[0].width;
+        this.updateIframeWidth(this.currentBreakpoint);
       });
 
     });
@@ -61,11 +62,10 @@ export class PartnerProjectComponent implements OnInit {
 
   refreshIframe() {
     const element = document.getElementById('projectIframe') as HTMLElement;
-    element.style.width = 'red';
   }
 
   updateSourceFile(file) {
-    console.log(file);
+    this.projectURL = this.sanitize(this.API_BASE_URL + file);
   }
 
   displayFileName(filePath) {

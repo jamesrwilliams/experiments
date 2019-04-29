@@ -7,9 +7,12 @@ breakpoints:
   - width: 700
     name: desktop
 mockStorefrontAPI: true
-types:
-  iframe:
-    width: "600px"
-  standalone: true
-  inline: true
+links:
+  - url: https://google.com
+    name: "Google Inc"
+storefronts:
+  - iframe
+  - standalone
+  - inline
+  - callcentre
 
