@@ -8,22 +8,20 @@
     "test": "tests"
   },
   "dependencies": {
+    "@types/mocha": "^5.2.6",
     "jsonc-parser": "^2.1.0"
   },
   "devDependencies": {
     "expose-loader": "^0.7.5",
-    "mocha": "^6.1.4",
-    "nyc": "^14.0.0",
     "ts-loader": "^5.4.4",
     "typescript": "^3.4.5",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
   },
   "scripts": {
-    "test": "nyc --reporter=html mocha",
     "dist": "webpack"
   },
-  "repository": "github:flaviocopes/testing",
+  "repository": "github:jamesrwilliams/experiments/tree/master/javascript/howlongtill.js",
   "author": "James R. Williams <james@jamesrwilliams.ca> (https://jamesrwilliams.ca)",
   "license": "ISC"
 }
