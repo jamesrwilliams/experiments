@@ -3,4 +3,5 @@ export interface Options {
     endDate: string;
     hideOnCompletion: boolean,
     startDate?: string,
+    classPrefix?: string;
 }

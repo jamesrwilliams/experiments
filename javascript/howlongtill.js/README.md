@@ -11,8 +11,6 @@ const defaults = {
 }
 
 const clock = new Countdown(defaults);
-
-
 ```
 
 ## ToDo

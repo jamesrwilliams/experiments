@@ -15,13 +15,16 @@
 
 <hr>
 
-<div id="clock"></div>
+<div class="clock-container">
+	<div id="clock"></div>
+</div>
 
 <script src="../../dist/countdown.js"></script>
-
 <script>
 	const options = {
-	    endDate: '2019-05-15T12:00',
+	    endDate: '2017-05-15T12:00:44',
+        classPrefix: 'example',
+		hideOnCompletion: false
 	};
 
 	const countdown = new Countdown(options);
