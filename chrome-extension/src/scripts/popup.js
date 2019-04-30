@@ -29,7 +29,7 @@ button_replace.addEventListener('click', () => {
     const target = document.getElementById('target');
 
     sendExtensionMessage({
-        element: target.value,
+        document: target.value,
         content: editor.getValue()
     });
 });
