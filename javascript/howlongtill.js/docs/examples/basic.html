@@ -18,13 +18,20 @@
 <div class="clock-container">
 	<div id="clock"></div>
 </div>
-
+<style>
+	.example-digit-days:before  { content: 'Days: '; }
+	.example-digit-hours:before  { content: 'Hours: '; }
+	.example-digit-minutes:before  { content: 'Minutes: '; }
+	.example-digit-seconds:before { content: 'Seconds: '; }
+	.example-digit { display: block; }
+</style>
 <script src="../../dist/countdown.js"></script>
 <script>
 	const options = {
-	    endDate: '2017-05-15T12:00:44',
-        classPrefix: 'example',
-		hideOnCompletion: false
+	    endDate: '2020-05-15T12:00:44',
+		hideOnCompletion: false,
+		classPrefix: 'example',
+		debug: true
 	};
 
 	const countdown = new Countdown(options);

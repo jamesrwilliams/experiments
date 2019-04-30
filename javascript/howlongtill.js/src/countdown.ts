@@ -1,5 +1,4 @@
-import {Options} from "./models/options.interface";
-import type = Mocha.utils.type;
+import { Options } from "./models/options.interface";
 
 /**
  * Countdown Clock class.
@@ -7,38 +6,56 @@ import type = Mocha.utils.type;
  */
 export class Countdown {
 
-    private defaults: Options = {
+    private readonly options: Options; // Our options object.
+    private readonly defaults: Options = {
         endDate: '',
         elm: '#clock',
         hideOnCompletion: false,
-        classPrefix: '',
+        startDate: '',
+        classPrefix: 'cc',
+        debug: false,
     };
 
-    clock: any;
-    options: Options;
-    elements: any = [];
-    ticker: any;
-    ticking = false;
+    elements: any = [];     // Array of elements used for the clock digits.
+    ticker: any;            // Reference used to dismiss our timeout if required.
+    ticking = false;        // Current status of the clock.
+    clock: any;             // Our clock container element.
 
     constructor(args: Options) {
 
+        // Merge provided options with the defaults.
         this.options = {...this.defaults, ...args};
 
+        // Throw an error if the end date is missing.
         if ( ! this.options.endDate || this.options.endDate === '') {
-            console.warn('[countdown.js] Config missing end date.');
+            console.log('Fired');
+            this.log('Config missing end date.');
+            console.log('Fired again');
         } else {
             this.initializeClock(this.options);
         }
     }
 
+    /**
+     * Initialize the countdown clock.
+     *
+     * @param options Configuration object.
+     */
     initializeClock(options: Options) {
 
         this.clock = document.querySelector(options.elm) as HTMLElement;
 
         if (! this.clock ) {
-            console.warn(`[countdown.js] Element "${options.elm}" not found.`);
+            this.log(`Element "${options.elm}" not found.`, 1);
         } else {
 
+            // Generate a class prefix from the options
+            const prefix = ( this.options.classPrefix !== '' ? this.options.classPrefix + '-' : '' );
+
+            // Add clock class to element.
+            this.clock.classList.add(`${prefix}clock`);
+
+            //
             let targets = ['days', 'hours', 'minutes', 'seconds'];
 
             targets.forEach(target => {
@@ -50,35 +67,30 @@ export class Countdown {
                 } else {
 
                     const span = document.createElement('span');
-                    const prefix = ( this.options.classPrefix !== '' ? this.options.classPrefix + '-' : '' );
+                    span.classList.add(`${prefix}digit`);
+                    span.classList.add(`${prefix}digit-${target}`);
 
-                    // Setup injected element.
-                    span.setAttribute("class", `${prefix}digit-${target}`);
                     this.clock.appendChild(span);
+
                     this.elements[target] = span;
 
                 }
 
             });
 
-            if ( this.ticking ) {
-                this.ticker = setInterval(() => this.updateClock(), 1000);
-            } else {
-                this.ticking = true;
-                this.updateClock();
-            }
+            this.ticker = setInterval(() => this.updateClock(), 1000);
 
         }
     }
 
     updateClock() {
 
-        const time = this.getTimeRemaining();
+        const time = this.getTimeRemaining(this.options.endDate);
 
         if ( time === false ) {
             this.ticking = false;
             clearInterval(this.ticker);
-            console.error('[countdown.js] Error getting remaining time.');
+            this.log('Error getting remaining time.');
         } else {
 
             if (time.total <= 0) {
@@ -93,7 +105,7 @@ export class Countdown {
                 if(this.options.hideOnCompletion) {
                     const parent = this.clock.parentElement;
                     parent.removeChild(this.clock);
-                    console.log(`[countdown.js] The clock "${this.options.elm}" has expired and has been removed.`);
+                    this.log(`The clock "${this.options.elm}" has expired and has been removed.`);
                 }
 
             } else {
@@ -107,10 +119,9 @@ export class Countdown {
         }
     }
 
-    getTimeRemaining() {
+    getTimeRemaining(target: string) {
 
-        const endTime = this.options.endDate;
-        const t = Date.parse(endTime) - Date.now();
+        const t = Date.parse(target) - Date.now();
         const seconds = Math.floor(t / 1000 % 60);
         const minutes = Math.floor(t / 1000 / 60 % 60);
         const days = Math.floor(t / (1000 * 60 * 60 * 24));
@@ -132,6 +143,27 @@ export class Countdown {
     }
 
     getCurrentTime() {
-        return this.getTimeRemaining();
+        return this.getTimeRemaining(this.options.endDate);
+    }
+
+    private log(message: string, level = 0) {
+
+        console.log('fired');
+
+        if( this.options.debug ) {
+
+            console.log('Reched here');
+
+            const log_message = `[countdown.js] ${message}`;
+
+            if( level === 0 ) {
+                console.log(log_message);
+            } else if(level === 1) {
+                console.warn(log_message);
+            } else if(level > 1) {
+                console.error(log_message);
+            }
+
+        }
     }
 }

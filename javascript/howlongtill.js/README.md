@@ -16,3 +16,7 @@ const clock = new Countdown(defaults);
 ## ToDo
 
 - [ ] Labels array - Add custom labels for each entry.
+
+## Contributing
+
+

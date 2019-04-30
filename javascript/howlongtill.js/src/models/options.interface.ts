@@ -4,4 +4,5 @@ export interface Options {
     hideOnCompletion: boolean,
     startDate?: string,
     classPrefix?: string;
+    debug?: boolean;
 }
