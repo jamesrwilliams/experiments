@@ -1,17 +1,23 @@
-## options
+# HowLongUntil.js
+
+A quick countdown clock library.
+
+## Usage
 
 ```js
-
-const config_options = {
-    startDate: '',
-    elm: '#parent',
-    hideOnCompletion: false,
-    elms: {
-        days: '#daysNumberSelector',
-        hours: '#hoursSelector',
-        minutes: '#minutesSelctor',
-        seconds: '#secondsSelector',
-    }
+const defaults = {
+    endDate: '',
+    elm: '#clock',
 }
 
+const clock = new Countdown(defaults);
 ```
+
+## ToDo
+
+- [ ] Labels array - Add custom labels for each entry.
+
+## Contributing
+
+
+>>>>>>> master

@@ -9,29 +9,35 @@
  * @link https://developer.chrome.com/extensions/content_scripts
  */
 
-chrome.extension.onMessage.addListener(
-    function(request, sender, sendResponse) {
+chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 
-        if ( request.element && request.content ) {
+        if ( request.document && request.content ) {
 
-            const element = document.querySelector( request.element );
+            const element = document.querySelector( request.document );
 
             if ( element ) {
+
                 element.innerHTML = request.content;
-                /*
-                 * Need to dynamically create scripts to preserve execution
-                 * @link https://blog.dareboost.com/en/2016/09/avoid-using-document-write-scripts-injection/
-                 */
-                /*
-                const sNew = document.createElement("script");
-                      sNew.async = true;
-                      sNew.src = "https://example.com/script.min.js";
-                const s0 = document.getElementsByTagName('script')[0];
-                      s0.parentNode.insertBefore(sNew, s0);
-                /* */
-                console.log('Content replaced!');
+
+                const scripts = element.querySelectorAll('script');
+
+                for (let i = 0; i < scripts.length; i ++) {
+
+                    const currentScriptElement = scripts[i];
+
+                    let js = currentScriptElement.text;
+
+                        currentScriptElement.remove();
+
+                    let newScriptElement = document.createElement('script');
+                        newScriptElement.text = js;
+
+                    element.append(newScriptElement);
+
+                }
+
             } else {
-                console.warn(`Element ${request.element} cannot be found in the current page.`);
+                console.warn(`Element ${request.document} cannot be found in the current page.`);
             }
 
         } else {

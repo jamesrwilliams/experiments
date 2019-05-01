@@ -1,8 +1,8 @@
 export interface Options {
-    elm: string,
+    elm: string;
     endDate: string;
-    hideOnCompletion: boolean,
-    startDate?: string,
+    hideOnCompletion: boolean;
+    startDate?: string;
     classPrefix?: string;
     debug?: boolean;
 }

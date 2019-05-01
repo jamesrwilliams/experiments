@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "strict": true,
+    "removeComments": true
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
