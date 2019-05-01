@@ -7,6 +7,8 @@ import { Options } from "./models/options.interface";
 export class Countdown {
 
     private readonly options: Options; // Our options object.
+
+    // Default configuration options.
     private readonly defaults: Options = {
         endDate: '',
         elm: '#clock',
@@ -17,7 +19,7 @@ export class Countdown {
     };
 
     elements: any = [];     // Array of elements used for the clock digits.
-    ticker: any;            // Reference used to dismiss our timeout if required.
+    ticker: any;            // Reference used to dismiss our timeout if required
     ticking = false;        // Current status of the clock.
     clock: any;             // Our clock container element.
 
@@ -27,10 +29,8 @@ export class Countdown {
         this.options = {...this.defaults, ...args};
 
         // Throw an error if the end date is missing.
-        if ( ! this.options.endDate || this.options.endDate === '') {
-            console.log('Fired');
+        if ( this.options.endDate === '') {
             this.log('Config missing end date.');
-            console.log('Fired again');
         } else {
             this.initializeClock(this.options);
         }
@@ -55,7 +55,7 @@ export class Countdown {
             // Add clock class to element.
             this.clock.classList.add(`${prefix}clock`);
 
-            //
+            // These are the names for eac of the output blocks.
             let targets = ['days', 'hours', 'minutes', 'seconds'];
 
             targets.forEach(target => {
@@ -83,9 +83,11 @@ export class Countdown {
         }
     }
 
+
+
     updateClock() {
 
-        const time = this.getTimeRemaining(this.options.endDate);
+        const time = this.getTimeRemaining();
 
         if ( time === false ) {
             this.ticking = false;
@@ -119,7 +121,9 @@ export class Countdown {
         }
     }
 
-    getTimeRemaining(target: string) {
+    getTimeRemaining() {
+
+        let target = this.options.endDate;
 
         const t = Date.parse(target) - Date.now();
         const seconds = Math.floor(t / 1000 % 60);
@@ -143,16 +147,12 @@ export class Countdown {
     }
 
     getCurrentTime() {
-        return this.getTimeRemaining(this.options.endDate);
+        return this.getTimeRemaining();
     }
 
     private log(message: string, level = 0) {
 
-        console.log('fired');
-
         if( this.options.debug ) {
-
-            console.log('Reched here');
 
             const log_message = `[countdown.js] ${message}`;
 

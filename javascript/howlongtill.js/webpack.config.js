@@ -17,8 +17,9 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js']
     },
     output: {
+        globalObject: 'typeof self !== \'undefined\' ? self : this',
         libraryTarget: "umd",
         filename: 'countdown.js',
-        umdNamedDefine: true,
+        umdNamedDefine: false,
     }
 };

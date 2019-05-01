@@ -9,7 +9,7 @@ export declare class Countdown {
     constructor(args: Options);
     initializeClock(options: Options): void;
     updateClock(): void;
-    getTimeRemaining(target: string): false | {
+    getTimeRemaining(): false | {
         'total': number;
         'days': number;
         'hours': number;
