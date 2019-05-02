@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IpcService } from "./ipc.service";
+import { IpcService } from './ipc.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,29 @@ import { IpcService } from "./ipc.service";
 export class AppComponent {
   title = 'hardflip';
 
+  model = {
+    channel: 'fromAngular',
+    message: ''
+  };
+
+  response = 'The response will go here';
+
   constructor(private readonly _ipc: IpcService) {
-    this._ipc.on('pong', (event: Electron.IpcMessageEvent) => {
-      console.log('pong');
+
+    this._ipc.on('toAngular', (event: Electron.IpcMessageEvent, data) => {
+
+      this.response = data;
+
     });
 
-    this._ipc.send('ping');
   }
+
+  sendMessage() {
+
+    this._ipc.send(this.model.channel, this.model.message);
+
+  }
+
+  get diagnostic() { return this.model; }
 
 }

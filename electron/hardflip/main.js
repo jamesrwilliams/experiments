@@ -5,26 +5,33 @@ let win;
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 600,
+    width: 800,
     height: 600,
-    title: "Hardflip",
+    title: "HardFlip",
     backgroundColor: '#ffffff',
-    icon: `file://${__dirname}/dist/assets/logo.png`
-  });
-
-  ipcMain.on('ping', (event) => {
-    event.sender.send('pong');
+    icon: `file://${__dirname}/dist/assets/logo.png`,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   win.loadURL(`file://${__dirname}/dist/index.html`);
 
   //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools();
+
+  win.webContents.on('did-finish-load', () => {
+    ipcMain.on('asynchronous-message', (event, arg) => {
+      console.log(arg);
+      event.returnValue('pong');
+    });
+  });
 
   // Event when the window is closed.
   win.on('closed', function () {
-    win = null
-  })
+    win = null;
+  });
+
 }
 
 // Create window on electron initialization
@@ -35,13 +42,18 @@ app.on('window-all-closed', function () {
 
   // On macOS specific close process
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
+});
+
+ipcMain.on('fromAngular', (event, data) => {
+  const message = `Hello from the electron main process. You sent the message: ${data}`;
+  event.sender.send('toAngular', {msg: message});
 });
 
 app.on('activate', function () {
   // macOS specific close process
   if (win === null) {
-    createWindow()
+    createWindow();
   }
 });

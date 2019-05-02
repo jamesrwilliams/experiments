@@ -8,6 +8,8 @@ export class IpcService {
 
   private _ipc: IpcRenderer | undefined;
 
+  private nonElectronMessage = 'Electron\'s IPC was not loaded';
+
   constructor() {
     if (window.require) {
       try {
@@ -16,7 +18,7 @@ export class IpcService {
         throw e;
       }
     } else {
-      console.warn('Electron\'s IPC was not loaded');
+      console.warn(this.nonElectronMessage);
     }
   }
 
@@ -29,6 +31,7 @@ export class IpcService {
 
   public send(channel: string, ...args): void {
     if (!this._ipc) {
+      console.warn('Cannot send message. ' + this.nonElectronMessage);
       return;
     }
     this._ipc.send(channel, ...args);

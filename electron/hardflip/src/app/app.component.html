@@ -1,2 +1,36 @@
-<p>Hardflip</p>
+<div class="jumbotron">
+  <h1 class="display-3">HardFlip</h1>
+  <p class="lead">A dumb electron projects.</p>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+
+      <pre><code>{{ diagnostic | json }}</code></pre>
+
+      <form (ngSubmit)="sendMessage()" #heroForm="ngForm">
+        <div class="form-row">
+          <div class="col-4">
+            <label class="sr-only" for="channel">Channel</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="model.channel" name="channel" id="channel" placeholder="Channel" value="ping">
+          </div>
+          <div class="col-6">
+            <label class="sr-only" for="message">Name</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="model.message" id="message" name="message" placeholder="Message">
+          </div>
+          <div class="col-2">
+            <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="form-group">
+        <label for="response">Electron Response</label>
+        <textarea class="form-control" readonly id="response" rows="3">{{ response | json }}</textarea>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
