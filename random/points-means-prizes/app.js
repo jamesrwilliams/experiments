@@ -67,6 +67,8 @@ $newRangeButton.addEventListener('click', () => {
 
     $ranges.appendChild($parentDiv);
 
+    $startInput.focus();
+
 });
 
 function searchForMatch(ranges, winner) {
