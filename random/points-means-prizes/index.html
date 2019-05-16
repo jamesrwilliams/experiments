@@ -12,13 +12,18 @@
 	<title>Document</title>
 
 	<style>
+
+		h1.winner {
+			color: green;
+		}
+
 		.form-group {
 			display: flex;
 			justify-content: space-between;
 		}
 
 		.form-group input {
-			margin-left: 10px;
+			margin-right: 10px;
 		}
 
 		.form-group button {
@@ -35,6 +40,28 @@
 			justify-content: space-between;
 		}
 
+		#ranges li {
+			display: flex;
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		#ranges li button {
+			width: 60px;
+		}
+
+		.range-labels {
+			flex-grow: 1;
+		}
+
+		.range-start:after {
+			content: ' - ';
+		}
+
+		.range-item .badge {
+			margin-right: 10px;
+		}
+
 	</style>
 </head>
 <body>
@@ -47,7 +74,7 @@
 				<div class="form-group">
 					<label for="prizeNumber" aria-hidden="false" class="sr-only sr-only-focusable">Winning Ticket Number</label>
 					<input type="number" pattern="[0-9]*" class="form-control" name="prizeNumber" data-qs id="prizeNumber" aria-describedby="emailHelp" placeholder="Number">
-					<button type="button" class="btn btn-secondary form-control" id="clearPrizeNumber">Clear</button>
+					<button type="button" class="btn btn-outline-secondary form-control" id="clearPrizeNumber">Clear</button>
 				</div>
 
 			</div>
@@ -55,14 +82,16 @@
 
 		<div class="container">
 			<section class="header">
-
+				<div class="form-group">
+					<input type="number" id="range_start" name="range_start" class="form-control" pattern="[0-9]*" placeholder="Start">
+					<input type="number" id="range_end"   name="range_end"   class="form-control" pattern="[0-9]*" placeholder="End">
+					<button id="addRange" class="btn btn-success form-control">Add</button>
+				</div>
 			</section>
+			<br>
 			<section class="ticket-ranges">
-
-				<div id="ranges"></div>
-
-				<button type="button" id="addRange" class="btn btn-primary">Add a range</button>
-				<button type="button" id="clearAll" class="btn btn-danger">Clear all</button>
+				<h3>Your Tickets</h3>
+				<ul id="ranges" class="list-group list-group-flush"></ul>
 			</section>
 		</div>
 	</main>
