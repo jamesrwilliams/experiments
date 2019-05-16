@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	      rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<title>Document</title>
+
+	<style>
+		.form-group {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.form-group input {
+			margin-right: 10px;
+		}
+
+		.form-group button {
+			width: 100px;
+		}
+
+		.jumbotron {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		header.jumbotron .form-group {
+			display: flex;
+			justify-content: space-between;
+		}
+
+	</style>
+</head>
+<body>
+
+	<main>
+		<header class="jumbotron">
+			<div class="container">
+				<h1 id="message" class="display-5 text-center">Points Means Prizes!</h1>
+				<br>
+				<div class="form-group">
+					<label for="prizeNumber" aria-hidden="false" class="sr-only sr-only-focusable">Winning Ticket Number</label>
+					<input type="number" class="form-control" name="prizeNumber" data-qs id="prizeNumber" aria-describedby="emailHelp" placeholder="Number">
+					<button type="button" class="btn btn-secondary form-control" id="clearPrizeNumber">Clear</button>
+				</div>
+
+			</div>
+		</header>
+
+		<div class="container">
+			<section class="header">
+
+			</section>
+			<section class="ticket-ranges">
+
+				<div id="ranges"></div>
+
+				<button type="button" id="addRange" class="btn btn-primary">Add a range</button>
+				<button type="button" id="clearAll" class="btn btn-danger">Clear all</button>
+			</section>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/gh/jamesrwilliams/quick-save@1.0.0/lib/qs.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
