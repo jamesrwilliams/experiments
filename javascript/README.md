@@ -1,6 +1,6 @@
-# Javascript
+## Javascript
 
-## Contents
+### Contents
 
 - [gulp/](./gulp) - A collection of [Gulp](https://gulpjs.com/) scripts doing various things.
 - [vr-view/](./vr-view) - An attempt at creating a 360degree video embed that supports Chrome's VR View library.
