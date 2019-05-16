@@ -16,6 +16,7 @@ $element.addEventListener('input', () => {
 
    var value = $element.value;
 
+   console.clear();
    console.log('Checking result', searchForMatch(value));
 
    var result = searchForMatch(value);
@@ -147,17 +148,18 @@ function searchForMatch(winner) {
         var lower = parseInt(range[0]);
         var upper = parseInt(range[1]);
 
-        var output =  between(winner, lower, upper);
+        var output =  between(parseInt(winner), lower, upper);
 
         return ( output ? index : false );
 
     });
 
+    console.log(result);
+
     return result.length > 0;
 }
 
 function between(x, min, max) {
-
 
     return x >= min && x <= max;
 }
