@@ -51,7 +51,7 @@ $newRangeButton.addEventListener('click', () => {
 
     var $removeBtn = document.createElement('button');
         $removeBtn.classList.add('btn');
-        $startInput.placeholder = 'Start';
+        $removeBtn.placeholder = 'End';
         $removeBtn.setAttribute("pattern", "[0-9]*");
         $removeBtn.classList.add('btn-danger');
         $removeBtn.classList.add('form-control');
@@ -61,9 +61,9 @@ $newRangeButton.addEventListener('click', () => {
            $parentDiv.remove();
         });
 
+    $parentDiv.appendChild($removeBtn);
     $parentDiv.appendChild($startInput);
     $parentDiv.appendChild($endInput);
-    $parentDiv.appendChild($removeBtn);
 
     $ranges.appendChild($parentDiv);
 
