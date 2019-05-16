@@ -1,0 +1,102 @@
+<main>
+<div class="jumbotron">
+  <p class="lead">
+    It will take <span class="result">{{ daysToKingsLanding | number : '1.0-0' }}</span> days for the Army of the dead to arrive in Kings Landing.<br>
+    Each white walker can recruit <span class="result">{{ whiteWalkerRecruitmentPerDay | number : '1.0-0' }}</span> additional wrights per day.
+    That is <span class="result">{{ newWightsPerDay | number : '1.0-0' }}</span> new wights per day! <br>
+    There will be <span class="result">{{ totalWightsWhenReachingKingsLanding | number : '1.0-0' }}</span> wights when arriving at Kings Landing!
+  </p>
+</div>
+<div class="container-fluid">
+  <form class="input-form" [formGroup]="myForm">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Army Of The Dead</h3>
+
+            <div class="form-group row">
+              <label for="startingWights" class="col-8 col-form-label">Number of wights</label>
+              <div class="col">
+                <input class="form-control" id="startingWights" type="number" formControlName="startingWights">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="startingWhiteWalkers" class="col-8 col-form-label">Number of White Walkers</label>
+              <div class="col">
+                <input class="form-control" id="startingWhiteWalkers" type="number" formControlName="startingWhiteWalkers">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="whiteWalkerRecruitmentInterval" class="col-8 col-form-label">White Walkers summon frequency?</label>
+              <div class="col">
+                <input class="form-control" id="whiteWalkerRecruitmentInterval" type="number" formControlName="whiteWalkerRecruitmentInterval">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="armyOfTheDeadMilesPerDay" class="col-8 col-form-label">Army of the dead miles per day</label>
+              <div class="col">
+                <input class="form-control" id="armyOfTheDeadMilesPerDay" type="number" formControlName="armyOfTheDeadMilesPerDay">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="whiteWalkerRecruitmentVolume" class="col-8 col-form-label">White walkers summon limit</label>
+              <div class="col">
+                <input class="form-control" id="whiteWalkerRecruitmentVolume" type="number" formControlName="whiteWalkerRecruitmentVolume">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">The Night's Watch</h3>
+
+            <div class="form-group row">
+              <label for="nightsWatchAttackInterval" class="col-8 col-form-label">Number of miles traveled between attacks</label>
+              <div class="col">
+                <input class="form-control" id="nightsWatchAttackInterval" type="number" formControlName="nightsWatchAttackInterval">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nightsWatchAttackMinimum" class="col-8 col-form-label">Minimum number of wright kills per attack</label>
+              <div class="col">
+                <input class="form-control" id="nightsWatchAttackMinimum" type="number" formControlName="nightsWatchAttackMinimum">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nightsWatchAttackCritChance" class="col-8 col-form-label">Chance to kill a White Walker</label>
+              <div class="col">
+                <div class="input-group">
+                  <input class="form-control" id="nightsWatchAttackCritChance" type="number" formControlName="nightsWatchAttackCritChance">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Misc</h3>
+            <div class="form-group">
+              <label for="milesToKingsLanding">Miles to Kings Landing</label>
+              <input class="form-control" id="milesToKingsLanding" type="number" formControlName="milesToKingsLanding">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+</main>
