@@ -39,6 +39,7 @@ $newRangeButton.addEventListener('click', () => {
     var $startInput = document.createElement('input');
         $startInput.type = 'number';
         $startInput.classList.add('form-control');
+        $startInput.setAttribute("pattern", "[0-9]*");
         $startInput.classList.add('range-start');
         $startInput.placeholder = 'Start';
 
@@ -51,6 +52,7 @@ $newRangeButton.addEventListener('click', () => {
     var $removeBtn = document.createElement('button');
         $removeBtn.classList.add('btn');
         $startInput.placeholder = 'Start';
+        $removeBtn.setAttribute("pattern", "[0-9]*");
         $removeBtn.classList.add('btn-danger');
         $removeBtn.classList.add('form-control');
         $removeBtn.innerHTML = '<i class="material-icons">delete</i>';
