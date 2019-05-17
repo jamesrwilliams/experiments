@@ -6,7 +6,7 @@ Explore ways to implement my own CLI tool using Node.js to act as a benchmark fo
 
 ## Usage
 
-Run `node index.js` to start the CLI from within the project.
+Run `node index.ts` to start the CLI from within the project.
 
 ## Links
 
