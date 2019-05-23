@@ -4,6 +4,69 @@
  *
  */
 
+/**
+ * Message router.
+ *
+ * For the popup. Handles actions passed back from the content.js script.
+ */
+
+chrome.extension.onMessage.addListener((request, sender) => {
+
+    if (request.action !== '' && request.payload !== null) {
+
+        switch (request.action) {
+            case 'edit':
+                handleEdit(request.payload);
+                break;
+            case 'debug':
+                console.log(request.payload);
+                break;
+            case 'feedback':
+
+                const data = request.payload;
+
+                if(data) {
+
+                    // Manipulate the data.
+
+                    for (let k in data){
+
+                        let target = document.getElementById(`offer_${k}`);
+
+                        if(target){
+                            if(k === 'consoleURL') {
+                                target.href = buildConsoleLink(data[k]);
+                            } else if(k === 'endDate' || k === 'startDate') {
+
+                                let date = reformatDateString(data[k]);
+
+                                target.innerText = date.toISOString();
+
+                            } else if(k === 'description') {
+                                target.innerHTML = data[k].replace(
+                                    /((http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?)/g,
+                                    '<a target="_blank" href="$1">$1</a>'
+                                );
+                            } else {
+                                target.innerText = data[k];
+                            }
+                        } else {
+                            console.log(`Element #offer_${k} cannot be found in the popup.`);
+                        }
+                    }
+
+                }
+
+                break;
+            default:
+                console.log(`Unmapped action: "${request.action}"`);
+        }
+
+    } else {
+        console.error('Missing action');
+    }
+});
+
 const result = null;
 const textarea = document.getElementById('clip');
 const button_clipboard = document.getElementById('btn_load_clipboard');
@@ -32,6 +95,12 @@ button_replace.addEventListener('click', () => {
 
 sendExtensionMessage('fetchStorefront');
 
+/**
+ * Send message wrapper for sending messages between the popup and content scripts.
+ * @param action
+ * @param payload
+ * @return {boolean}
+ */
 function sendExtensionMessage(action, payload = false) {
 
     if (!action) {
@@ -46,6 +115,11 @@ function sendExtensionMessage(action, payload = false) {
     });
 }
 
+/**
+ * Get the content of the clipboard.
+ *
+ * @return {string}
+ */
 function getClipboard() {
     let result = '';
     const textarea = document.getElementById('clip');
@@ -63,46 +137,40 @@ function getClipboard() {
 }
 
 /**
- * Message router.
+ * Utility function to render data to the popup window.
  *
- * For the popup. Handles actions passed back from the content.js script.
+ * @param content {string} The HTML to add to the popup.
  */
+function debug(content) {
+    const debugMessage = document.createElement('div');
+          debugMessage.innerHTML = content;
+          debugMessage.style.cssText = "border: 1px solid red; color: black; padding: 10px;";
 
-chrome.extension.onMessage.addListener((request, sender) => {
+    document.querySelector('.extension-container').appendChild(debugMessage);
+}
 
-    console.log({request, sender});
+/**
+ * Reformat the URL provided by the API to a usable link for the offer in the console.
+ * @param url
+ * @return {string|boolean}
+ */
+function buildConsoleLink(url) {
 
-    if (request.action !== '' && request.payload !== null) {
+    let urlParts = url.split("/v1");
 
-        switch (request.action) {
-            case 'edit':
-                handleEdit(request.payload);
-                break;
-            case 'debug':
-                console.log(request.payload);
-                break;
-            case 'feedback':
-
-                const data = request.payload;
-
-                for (let k in data){
-
-                    let target = document.getElementById(`offer_${k}`);
-
-                    if(k === 'consoleURL') {
-                        target.href = data[k];
-                    } else {
-                        target.innerText = data[k];
-                    }
-
-                }
-
-                break;
-            default:
-                console.log(`Unmapped action: "${request.action}"`);
-        }
-
+    if(urlParts.length !== 2) {
+        return false;
     } else {
-        console.error('Missing action');
+        let prod = (urlParts[0].indexOf('staging') === -1 ? true : false );
+        return (prod ? 'https://console.points.com' : 'https://console-staging.lxc.points.com' ) + urlParts[1];
     }
-});
+
+}
+
+function reformatDateString(dateString) {
+    const split = dateString.split('T');
+    const correctDateString = split[1].length > 13 ? split[0] + 'T' + split[1].substring(0, 12) + 'Z' : '';
+
+    return new Date(correctDateString);
+
+}

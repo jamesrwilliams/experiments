@@ -5,7 +5,6 @@
   "manifest_version": 2,
   "homepage_url": "https://github.com/jamesrwilliams",
   "permissions": [
-    "storage",
     "tabs",
     "activeTab",
     "clipboardRead",
@@ -18,12 +17,6 @@
   "web_accessible_resources": [
     "scripts/hermes.js"
   ],
-  "background": {
-    "scripts": [
-      "scripts/background.js"
-    ],
-    "persistent": true
-  },
   "icons": {
     "128": "assets/icon128.png"
   },

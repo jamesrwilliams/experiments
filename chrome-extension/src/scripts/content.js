@@ -10,10 +10,18 @@
  */
 
 window.addEventListener("message", function(event) {
-    chrome.runtime.sendMessage({
-        action: 'feedback',
-        payload: event.data
-    });
+    if(event.data.offer !== undefined) {
+        if(event.data.offer === true) {
+            chrome.runtime.sendMessage({
+                action: 'feedback',
+                payload: event.data.data,
+            });
+        } else {
+            chrome.runtime.sendMessage({
+                action: 'feedback',
+            });
+        }
+    }
 });
 
 chrome.extension.onMessage.addListener((request, sender) => {
@@ -33,7 +41,6 @@ chrome.extension.onMessage.addListener((request, sender) => {
                 default:
                     console.log(`Unmapped action: "${request.action}"`);
             }
-
         } else {
             console.error('Missing action');
         }
@@ -41,12 +48,10 @@ chrome.extension.onMessage.addListener((request, sender) => {
 );
 
 function fetchStorefront() {
-
     let s = document.createElement('script');
             s.src = chrome.extension.getURL('scripts/hermes.js');
 
     document.head.appendChild(s);
-
 }
 
 function handleEdit(payload) {
