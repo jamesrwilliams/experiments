@@ -10,16 +10,12 @@
  */
 
 window.addEventListener("message", function(event) {
-
-    console.log(event);
-
     chrome.runtime.sendMessage({
         action: 'feedback',
         payload: event.data
     });
 });
 
-//*
 chrome.extension.onMessage.addListener((request, sender) => {
 
         if ( request.action !== '' ) {
@@ -43,15 +39,6 @@ chrome.extension.onMessage.addListener((request, sender) => {
         }
     }
 );
-
-// */
-
-function sendMessage() {
-    chrome.runtime.sendMessage({
-        action: 'feedback',
-        payload: 'Fetched storefront API'
-    });
-}
 
 function fetchStorefront() {
 
@@ -84,7 +71,6 @@ function handleEdit(payload) {
             newScriptElement.text = js;
 
             element.append(newScriptElement);
-
         }
 
     } else {

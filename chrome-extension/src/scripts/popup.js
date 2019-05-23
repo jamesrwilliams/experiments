@@ -71,7 +71,6 @@ function getClipboard() {
 chrome.extension.onMessage.addListener((request, sender) => {
 
     console.log({request, sender});
-    console.log('Message received');
 
     if (request.action !== '' && request.payload !== null) {
 
@@ -98,12 +97,6 @@ chrome.extension.onMessage.addListener((request, sender) => {
 
                 }
 
-                // const messageBody = document.createElement('div');
-                //       messageBody.innerText = JSON.stringify(data);
-
-                // const container = document.querySelector('.extension-container');
-                      // container.appendChild(messageBody);
-
                 break;
             default:
                 console.log(`Unmapped action: "${request.action}"`);
@@ -113,9 +106,3 @@ chrome.extension.onMessage.addListener((request, sender) => {
         console.error('Missing action');
     }
 });
-
-// First, validate the message's structure
-// if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
-//     // Enable the page-action for the requesting tab
-//     chrome.pageAction.show(sender.tab.id);
-// }

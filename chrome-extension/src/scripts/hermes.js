@@ -17,8 +17,6 @@ function sendMessage(offer) {
     }, "*");
 }
 
-// TODO get payload back to the popup using the Chrome storage API.
-
 
 
 
