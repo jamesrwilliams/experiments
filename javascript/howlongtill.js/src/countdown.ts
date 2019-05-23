@@ -2,11 +2,11 @@ import { Options } from "./models/options.interface";
 
 /**
  * Countdown Clock class.
- *
  */
 export class Countdown {
 
-    private readonly options: Options; // Our options object.
+    // Our options object.
+    private readonly options: Options;
 
     // Default configuration options.
     private readonly defaults: Options = {
@@ -16,6 +16,7 @@ export class Countdown {
         startDate: '',
         classPrefix: 'cc',
         debug: false,
+        callback: null
     };
 
     elements: any = [];     // Array of elements used for the clock digits.
@@ -41,7 +42,11 @@ export class Countdown {
      *
      * @param options Configuration object.
      */
-    initializeClock(options: Options) {
+    private initializeClock(options: Options) {
+
+        if(document === undefined) {
+            return false;
+        }
 
         this.clock = document.querySelector(options.elm) as HTMLElement;
 
@@ -78,14 +83,13 @@ export class Countdown {
 
             });
 
+            this.updateClock();
             this.ticker = setInterval(() => this.updateClock(), 1000);
 
         }
     }
 
-
-
-    updateClock() {
+    private updateClock() {
 
         const time = this.getTimeRemaining();
 
@@ -121,7 +125,7 @@ export class Countdown {
         }
     }
 
-    getTimeRemaining() {
+    private getTimeRemaining() {
 
         let target = this.options.endDate;
 
@@ -143,11 +147,6 @@ export class Countdown {
             };
         }
 
-
-    }
-
-    getCurrentTime() {
-        return this.getTimeRemaining();
     }
 
     private log(message: string, level = 0) {

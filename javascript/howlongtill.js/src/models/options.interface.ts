@@ -5,4 +5,5 @@ export interface Options {
     startDate?: string,
     classPrefix?: string;
     debug?: boolean;
+    callback?: any;
 }

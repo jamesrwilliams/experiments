@@ -1,41 +1,39 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>HowLongUntil.js</title>
-</head>
-<body>
-<h1>Simple Countdown Library</h1>
-<hr>
-<h2>Basic Example</h2>
-<br>
-<a href="../">Back</a>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>howlongtill.js - Basic Example</title>
+	</head>
+	<body>
+		<h1>howlongtill.js - Basic Example</h1>
+		<hr>
+		<a href="index.html">Back</a>
 
-<hr>
+		<div class="clock-container">
+			<div id="clock"></div>
+		</div>
+		<style>
+			#clock {
+				font-weight: bold;
+				text-align: center;
+				font-size: 24px;
+			}
+			.cc-digit-days:after  { content: ' days, '; }
+			.cc-digit-hours:after  { content: ' hours, '; }
+			.cc-digit-minutes:after  { content: ' minutes, '; }
+			.cc-digit-seconds:after { content: ' seconds.'; }
+		</style>
+		<script src="../../dist/countdown.js"></script>
+		<script>
+			const options = {
+			    endDate: '2020-05-15T12:00:44',
+				elm: '#clock',
+			};
 
-<div class="clock-container">
-	<div id="clock"></div>
-</div>
-<style>
-	.example-digit-days:before  { content: 'Days: '; }
-	.example-digit-hours:before  { content: 'Hours: '; }
-	.example-digit-minutes:before  { content: 'Minutes: '; }
-	.example-digit-seconds:before { content: 'Seconds: '; }
-	.example-digit { display: block; }
-</style>
-<script src="../../dist/countdown.js"></script>
-<script>
-	const options = {
-	    endDate: '2020-05-15T12:00:44',
-		hideOnCompletion: false,
-		classPrefix: 'example',
-		debug: true
-	};
+			const countdown = new Countdown(options);
 
-	const countdown = new Countdown(options);
-
-</script>
-</body>
+		</script>
+	</body>
 </html>

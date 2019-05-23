@@ -7,21 +7,8 @@ export declare class Countdown {
     ticking: boolean;
     clock: any;
     constructor(args: Options);
-    initializeClock(options: Options): void;
-    updateClock(): void;
-    getTimeRemaining(): false | {
-        'total': number;
-        'days': number;
-        'hours': number;
-        'minutes': number;
-        'seconds': number;
-    };
-    getCurrentTime(): false | {
-        'total': number;
-        'days': number;
-        'hours': number;
-        'minutes': number;
-        'seconds': number;
-    };
+    private initializeClock;
+    private updateClock;
+    private getTimeRemaining;
     private log;
 }

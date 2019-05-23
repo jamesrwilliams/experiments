@@ -6,3 +6,4 @@
 - [vr-view/](./vr-view) - An attempt at creating a 360degree video embed that supports Chrome's VR View library.
 - [pretty-print-json.js](./pretty-print-json.js) - Showcasing how to pretty print JSON with javascript.
 - [typescript](./typescript) - A basic reference Typescript project.
+- [howlongtill.js](./howlongtill.js) - A countdown clock Javascript Library.

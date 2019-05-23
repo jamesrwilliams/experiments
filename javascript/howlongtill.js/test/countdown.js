@@ -5,7 +5,6 @@ const jsdom = require('jsdom').JSDOM;
 // The Library
 const Countdown = require('../src/countdown').Countdown;
 
-
 describe('countdown.js', () => {
 
     context('Initialises correctly', () => {
@@ -20,11 +19,14 @@ describe('countdown.js', () => {
 
     context('getCurrentTime() returns the current time difference', () => {
 
-        const dom = new jsdom(`<!DOCTYPE html><p>Hello world</p>`);
+        let document = (typeof document === "undefined") ? {} : document;
 
-        const clock = new Countdown();
+        document.body.innerHTML = '<div id="clock"></div>';
 
-        let check = clock.getTimeRemaining();
+        const clock = new Countdown({
+            endDate: '2020-05-15T12:00:44',
+            elm: '#clock',
+        });
 
         it('the response should be numerical in type', () => {
             expect(clock).to.be.a('number');

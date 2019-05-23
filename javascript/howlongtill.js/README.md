@@ -1,4 +1,4 @@
-# HowLongUntil.js
+# howlongtill.js
 
 A quick countdown clock library.
 
@@ -10,14 +10,14 @@ const defaults = {
     elm: '#clock',
 }
 
-const clock = new Countdown(defaults);
+Countdown.init(defaults);
 ```
 
 ## ToDo
 
-- [ ] Labels array - Add custom labels for each entry.
+- [ ] Selector array for each group.
+- [ ] Add option labels array - Add custom labels for each entry.
 
 ## Contributing
 
-
->>>>>>> master
+Run `npm run dist` to run a watched webpack build.
