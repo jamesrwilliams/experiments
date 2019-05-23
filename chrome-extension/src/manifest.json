@@ -4,10 +4,28 @@
   "description": "Dynamically replace contents of a page without using developer tools!",
   "manifest_version": 2,
   "homepage_url": "https://github.com/jamesrwilliams",
-  "permissions": ["storage", "clipboardRead"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "clipboardRead",
+    "http://*/",
+    "https://*/"
+  ],
+  "externally_connectable": {
+    "ids": ["*"]
+  },
+  "web_accessible_resources": [
+    "scripts/hermes.js"
+  ],
   "background": {
-    "scripts": ["scripts/background.js"],
+    "scripts": [
+      "scripts/background.js"
+    ],
     "persistent": true
+  },
+  "icons": {
+    "128": "assets/icon128.png"
   },
   "browser_action": {
     "default_title": "HTML Replace",
@@ -18,7 +36,9 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["scripts/content.js"]
+      "js": [
+        "scripts/content.js"
+      ]
     }
   ]
 }

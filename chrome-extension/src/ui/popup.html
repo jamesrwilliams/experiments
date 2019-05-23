@@ -13,52 +13,33 @@
 				border: 0;
 			}
 			.extension-container {
-				width: 600px;
+				width: 400px;
+				height: 200px;
 				font-family: sans-serif;
 				margin: 0;
 				padding: 5px 8px;
 			}
-
-			#editor {
-				position: relative;
-				width: 100%;
-				height: 300px;
-				margin-bottom: 8px;
-			}
-			.pts-button {
-				border: 0;
-				background: #cccccc;
-				display: block;
-				width: 49%;
-				font-size: 12px;
-				padding: 8px 0;
-				border-radius: 3px;
-			}
-			.button-container {
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 10px;
-			}
-			.target-container {
-				margin-bottom: 10px;
-			}
-			.target-container label {
-				display: flex;
-				justify-content: space-between;
-			}
-			.target-container span {
-				padding-right: 10px;
-			}
-			.target-container input {
-				font-family: monospace;
-				width: 100%;
-				border: 1px solid #cccccc;
-				padding: 0 5px;
-				border-radius: 3px;
-			}
 		</style>
 	</head>
 	<body class="extension-container">
+
+		<div class="tab info-tab">
+			<h1 id="offer_name"></h1>
+			<p id="offer_description"></p>
+			<hr>
+			<ul>
+				<li>Start Date: <span id="offer_startDate"></span></li>
+				<li>Start Date: <span id="offer_endDate"></span></li>
+				<li>Priority: <span id="offer_priority"></span></li>
+			</ul>
+			<hr>
+			<a id="offer_consoleURL" target="_blank" href="#">View offer in console</a>
+			<hr>
+		</div>
+
+		<div class="tab developer-tab ">
+
+		</div>
 
 		<div class="target-container">
 			<label for="target">
@@ -73,8 +54,5 @@
 		</div>
 		<input type="text" aria-hidden="true" id="clip" style="display: none" />
 	</body>
-	<script src="../scripts/vendor/ace/ace.js"></script>
-	<script src="../scripts/vendor/ace/mode-html.js"></script>
-	<script src="../scripts/vendor/ace/mode-javascript.js"></script>
 	<script src="../scripts/popup.js"></script>
 </html>

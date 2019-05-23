@@ -1,0 +1,11 @@
+{
+  "name": "chrome-extension",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-extension-reloader": "^1.0.1"
+  }
+}

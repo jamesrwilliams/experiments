@@ -9,39 +9,86 @@
  * @link https://developer.chrome.com/extensions/content_scripts
  */
 
-chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
+window.addEventListener("message", function(event) {
 
-        if ( request.document && request.content ) {
+    console.log(event);
 
-            const element = document.querySelector( request.document );
+    chrome.runtime.sendMessage({
+        action: 'feedback',
+        payload: event.data
+    });
+});
 
-            if ( element ) {
+//*
+chrome.extension.onMessage.addListener((request, sender) => {
 
-                element.innerHTML = request.content;
+        if ( request.action !== '' ) {
 
-                const scripts = element.querySelectorAll('script');
-
-                for (let i = 0; i < scripts.length; i ++) {
-
-                    const currentScriptElement = scripts[i];
-
-                    let js = currentScriptElement.text;
-
-                        currentScriptElement.remove();
-
-                    let newScriptElement = document.createElement('script');
-                        newScriptElement.text = js;
-
-                    element.append(newScriptElement);
-
-                }
-
-            } else {
-                console.warn(`Element ${request.document} cannot be found in the current page.`);
+            switch( request.action ) {
+                case 'edit':
+                    handleEdit(request.payload);
+                    break;
+                case 'debug':
+                    console.log(request.payload);
+                    break;
+                case 'fetchStorefront':
+                    fetchStorefront();
+                    break;
+                default:
+                    console.log(`Unmapped action: "${request.action}"`);
             }
 
         } else {
-            console.error('Missing content');
+            console.error('Missing action');
         }
     }
 );
+
+// */
+
+function sendMessage() {
+    chrome.runtime.sendMessage({
+        action: 'feedback',
+        payload: 'Fetched storefront API'
+    });
+}
+
+function fetchStorefront() {
+
+    let s = document.createElement('script');
+            s.src = chrome.extension.getURL('scripts/hermes.js');
+
+    document.head.appendChild(s);
+
+}
+
+function handleEdit(payload) {
+
+    const element = document.querySelector(request.document);
+
+    if (element) {
+
+        element.innerHTML = request.content;
+
+        const scripts = element.querySelectorAll('script');
+
+        for (let i = 0; i < scripts.length; i ++) {
+
+            const currentScriptElement = scripts[i];
+
+            let js = currentScriptElement.text;
+
+            currentScriptElement.remove();
+
+            let newScriptElement = document.createElement('script');
+            newScriptElement.text = js;
+
+            element.append(newScriptElement);
+
+        }
+
+    } else {
+        console.warn(`Element ${request.document} cannot be found in the current page.`);
+    }
+
+}
