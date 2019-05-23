@@ -4,35 +4,36 @@
  * Chrome extensions injected messenger.
  */
 
-sendMessage(storefront.info());
+if(storefront !== undefined) {
 
-function sendMessage(input) {
+    sendMessage(storefront.info());
 
-    let payload = { offer: false };
+    function sendMessage(input) {
 
-    if(input.offer !== undefined) {
+        let payload = { offer: false };
 
-        let offer = input.offer.offer;
+        if(input.offer !== undefined) {
 
-        payload = {
-            offer: true,
-            data: {
-                consoleURL: offer.links.self.href,
-                name: offer.name,
-                description: offer.description,
-                startDate: offer.validity.startDate,
-                endDate: offer.validity.endDate,
-                priority: offer.priority
-            }
-        };
+            let offer = input.offer.offer;
+
+            payload = {
+                offer: true,
+                data: {
+                    consoleURL: offer.links.self.href,
+                    name: offer.name,
+                    description: offer.description,
+                    startDate: offer.validity.startDate,
+                    endDate: offer.validity.endDate,
+                    priority: offer.priority
+                }
+            };
+
+        }
+
+        window.postMessage(payload, '*');
 
     }
 
-    window.postMessage(payload, '*');
-
 }
-
-
-
 
 
