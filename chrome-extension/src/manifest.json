@@ -1,21 +1,20 @@
 {
-  "name": "HTML Reload Utility",
+  "name": "Points Spyglass",
   "version": "1.0",
-  "description": "Dynamically replace contents of a page without using developer tools!",
+  "description": "Utility extension for Points.",
   "manifest_version": 2,
   "homepage_url": "https://github.com/jamesrwilliams",
   "permissions": [
+    "*://*/*",
     "tabs",
     "activeTab",
-    "clipboardRead",
-    "http://*/",
-    "https://*/"
+    "clipboardRead"
   ],
   "externally_connectable": {
     "ids": ["*"]
   },
   "web_accessible_resources": [
-    "scripts/hermes.js"
+    "scripts/spyglass.hermes.js"
   ],
   "icons": {
     "128": "assets/icon128.png"

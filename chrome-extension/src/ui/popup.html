@@ -11,48 +11,50 @@
 				margin: 0;
 				padding: 0;
 				border: 0;
-			}
-			.extension-container {
-				width: 400px;
 				height: 200px;
+			}
+			.pts-spyglass {
+				opacity: 0;
+				width: 400px;
 				font-family: sans-serif;
 				margin: 0;
 				padding: 5px 8px;
+				transition: opacity 2s ease;
 			}
+
+			.offer.pts-spyglass {
+				opacity: 1;
+			}
+
 		</style>
 	</head>
-	<body class="extension-container">
+	<body class="pts-spyglass">
 
-		<div class="tab info-tab">
+		<section class="information">
 			<h1 id="offer_name"></h1>
 			<p id="offer_description"></p>
-			<hr>
 			<ul>
 				<li>Start date: <span id="offer_startDate"></span></li>
 				<li>End date: <span id="offer_endDate"></span></li>
 				<li>Priority: <span id="offer_priority"></span></li>
+				<li><a id="offer_consoleURL" target="_blank" href="#">View offer in console</a></li>
 			</ul>
-			<hr>
-			<a id="offer_consoleURL" target="_blank" href="#">View offer in console</a>
-			<hr>
-		</div>
+		</section>
 
-		<div class="tab developer-tab ">
-
-		</div>
-
-		<div class="target-container">
-			<label for="target">
-				<span class="label-message">Target</span>
-				<input type="text" name="target" id="target" placeholder="div#element" value=".bgt-marketing-creative" />
-			</label>
-		</div>
-		<div id="editor"></div>
-		<div class="button-container">
-			<button class="pts-button" id="btn_load_clipboard">Load from clipboard</button>
-			<button class="pts-button" id="btn_replace">Replace</button>
-		</div>
-		<input type="text" aria-hidden="true" id="clip" style="display: none" />
+		<section class="developer" style="display: none">
+			<div class="target-container">
+				<label for="target">
+					<span class="label-message">Target</span>
+					<input type="text" name="target" id="target" placeholder="div#element" value=".bgt-marketing-creative" />
+				</label>
+			</div>
+			<div id="editor"></div>
+			<div class="button-container">
+				<button class="pts-button" id="btn_load_clipboard">Load from clipboard</button>
+				<button class="pts-button" id="btn_replace">Replace</button>
+			</div>
+			<input type="text" aria-hidden="true" id="clip" style="display: none" />
+		</section>
 	</body>
 	<script src="../scripts/popup.js"></script>
 </html>

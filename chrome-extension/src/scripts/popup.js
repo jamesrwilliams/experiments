@@ -4,6 +4,13 @@
  *
  */
 
+const result = null;
+const textarea = document.getElementById('clip');
+const button_clipboard = document.getElementById('btn_load_clipboard');
+const button_replace = document.getElementById('btn_replace');
+
+const $popupContainer = document.querySelector('.pts-spyglass');
+
 /**
  * Message router.
  *
@@ -24,6 +31,8 @@ chrome.extension.onMessage.addListener((request, sender) => {
             case 'feedback':
 
                 const data = request.payload;
+
+                console.log(data);
 
                 if(data) {
 
@@ -50,11 +59,20 @@ chrome.extension.onMessage.addListener((request, sender) => {
                             } else {
                                 target.innerText = data[k];
                             }
+
+
                         } else {
                             console.log(`Element #offer_${k} cannot be found in the popup.`);
                         }
                     }
 
+                    $popupContainer.classList.add('offer');
+
+                } else {
+
+                    $popupContainer.classList.add('no-offer');
+
+                    debug('No offer info');
                 }
 
                 break;
@@ -67,10 +85,7 @@ chrome.extension.onMessage.addListener((request, sender) => {
     }
 });
 
-const result = null;
-const textarea = document.getElementById('clip');
-const button_clipboard = document.getElementById('btn_load_clipboard');
-const button_replace = document.getElementById('btn_replace');
+
 
 button_clipboard.addEventListener('click', () => {
 
@@ -144,9 +159,9 @@ function getClipboard() {
 function debug(content) {
     const debugMessage = document.createElement('div');
           debugMessage.innerHTML = content;
-          debugMessage.style.cssText = "border: 1px solid red; color: black; padding: 10px;";
+          debugMessage.style.cssText = "border: 1px solid red; color: black; padding: 10px; margin-top: 10px;";
 
-    document.querySelector('.extension-container').appendChild(debugMessage);
+    document.querySelector('.pts-spyglass').appendChild(debugMessage);
 }
 
 /**

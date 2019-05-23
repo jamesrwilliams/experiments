@@ -17,9 +17,15 @@ window.addEventListener("message", function(event) {
                 payload: event.data.data,
             });
         } else {
-            chrome.runtime.sendMessage({
-                action: 'feedback',
-            });
+
+            // if ( ! fetchStorefrontIframe() ) {
+            //     console.log('Cannot find either iframe or standalone');
+            //     // chrome.runtime.sendMessage({
+            //     //     action: 'feedback',
+            //     // });
+            // } else {
+            //     console.log('Cannot find standalone but found in iframe');
+            // }
         }
     }
 });
@@ -49,7 +55,7 @@ chrome.extension.onMessage.addListener((request, sender) => {
 
 function fetchStorefront() {
     let s = document.createElement('script');
-            s.src = chrome.extension.getURL('scripts/hermes.js');
+            s.src = chrome.extension.getURL('scripts/spyglass.hermes.js');
 
     document.head.appendChild(s);
 }
