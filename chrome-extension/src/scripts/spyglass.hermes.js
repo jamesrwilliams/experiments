@@ -4,51 +4,41 @@
  * Spyglass' storefront sniffer.
  */
 
-if(typeof storefront !== 'undefined') {
+    if (typeof type === 'undefined') {
+        let type;
+    }
 
-    console.log(`We have a storefront in the main window!`);
-    let payload = buildPayload(storefront.info());
-    window.postMessage(payload, '*');
+    type = (window.location !== window.parent.location ? 'iframe' : 'standalone');
 
-} else {
-
-    // Check for iframe
-    let iframeWindow = document.getElementById('points-frame');
-
-    if(iframeWindow) {
-
-        console.log(iframeWindow.contentWindow);
-
-        // Insert into the iframe instead.
-
-        let iframeStorefront = iframeWindow.contentWindow.storefront;
-
-        if(typeof iframeStorefront !== 'undefined') {
-            let payload = buildPayload(iframeStorefront.info());
-            window.postMessage(payload, '*');
-        } else {
-            window.postMessage({offer: false}, '*');
-        }
+    if (typeof storefront !== 'undefined') {
+        console.log(`[spyglass.hermes.js] We have a storefront in ${type} mode!`);
+        let payload = buildPayload(type, storefront.info());
+        window.postMessage(payload, '*');
 
     } else {
-        console.log(`We don't have an iframe`);
-        window.postMessage({offer: false}, '*');
+        let payload = buildPayload(type);
+        window.postMessage(payload, '*');
     }
-}
 
-function buildPayload(input) {
+    function buildPayload(offerType = 'standalone', input = false) {
+        if (input) {
+            let offer = input.offer.offer;
 
-    let offer = input.offer.offer;
-
-    return {
-        offer: true,
-        data: {
-            consoleURL: offer.links.self.href,
-            name: offer.name,
-            description: offer.description,
-            startDate: offer.validity.startDate,
-            endDate: offer.validity.endDate,
-            priority: offer.priority
+            return {
+                offer: offerType,
+                payload: {
+                    consoleURL: offer.links.self.href,
+                    name: offer.name,
+                    description: offer.description,
+                    startDate: offer.validity.startDate,
+                    endDate: offer.validity.endDate,
+                    priority: offer.priority
+                }
+            }
+        } else {
+            return {
+                offer: offerType,
+                payload: false
+            }
         }
     }
-}

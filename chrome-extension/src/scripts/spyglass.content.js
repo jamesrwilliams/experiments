@@ -1,5 +1,5 @@
 /**
- * content.js
+ * spyglass.content.js
  *
  * Content scripts are files that run in the context of web pages.
  * By using the standard Document Object Model (DOM), they are able
@@ -10,22 +10,34 @@
  */
 
 window.addEventListener("message", function(event) {
-    if(event.data.offer !== undefined) {
-        if(event.data.offer === true) {
-            chrome.runtime.sendMessage({
-                action: 'feedback',
-                payload: event.data.data,
-            });
-        } else {
 
-            // if ( ! fetchStorefrontIframe() ) {
-            //     console.log('Cannot find either iframe or standalone');
-            //     // chrome.runtime.sendMessage({
-            //     //     action: 'feedback',
-            //     // });
-            // } else {
-            //     console.log('Cannot find standalone but found in iframe');
-            // }
+    if(event.data.offer !== undefined) {
+
+        let storefrontType = event.data.offer;
+        let offerPayload = event.data.payload;
+
+        if (storefrontType === 'standalone' && offerPayload === false ) {
+            fetchStorefront(true);
+        }
+
+        if(storefrontType === 'iframe' ) {
+
+            // We have an iFrame but due to X-Origin we need to prompt users to open the frame separably.
+
+            chrome.runtime.sendMessage({
+                action: 'iframeEmpty',
+                payload: offerPayload
+            });
+        }
+
+        if(storefrontType !== '' && typeof offerPayload !== 'string' ) {
+
+            console.log('[spyglass.content.js] Send message to spyglass.popup.js');
+
+            chrome.runtime.sendMessage({
+                action: 'offerDataFound',
+                payload: offerPayload,
+            });
         }
     }
 });
@@ -53,11 +65,35 @@ chrome.extension.onMessage.addListener((request, sender) => {
     }
 );
 
-function fetchStorefront() {
-    let s = document.createElement('script');
-            s.src = chrome.extension.getURL('scripts/spyglass.hermes.js');
+function fetchStorefront(iframe = false) {
+    let scriptID = 'spyglass-hermes-script';
 
-    document.head.appendChild(s);
+    let scripRef = document.getElementById(scriptID);
+
+    if(scripRef) {
+        //  We already have a script tag on the page. Removing it and proceeding.
+        scripRef.remove();
+    }
+
+    let s = document.createElement('script');
+        s.id = scriptID;
+        s.src = chrome.extension.getURL('scripts/spyglass.hermes.js');
+
+    let iframeElement = document.getElementById('points-frame');
+
+    if(iframe) {
+
+        if(iframeElement) {
+            // iframe storefronts are currently unsupported due to security issues.
+            window.postMessage({offer: 'iframe', payload: iframeElement.src }, '*');
+        } else {
+            console.log(`[spyglass.content.js] We don't have an iframe element to append too!`);
+        }
+
+    } else {
+        document.head.appendChild(s);
+    }
+
 }
 
 function handleEdit(payload) {

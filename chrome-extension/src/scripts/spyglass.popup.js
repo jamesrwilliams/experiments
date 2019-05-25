@@ -1,5 +1,5 @@
 /**
- * popup.js
+ * spyglass.popup.js
  *
  *
  */
@@ -8,13 +8,12 @@ const result = null;
 const textarea = document.getElementById('clip');
 const button_clipboard = document.getElementById('btn_load_clipboard');
 const button_replace = document.getElementById('btn_replace');
-
 const $popupContainer = document.querySelector('.pts-spyglass');
 
 /**
  * Message router.
  *
- * For the popup. Handles actions passed back from the content.js script.
+ * For the popup. Handles actions passed back from the spyglass.content.js script.
  */
 
 chrome.extension.onMessage.addListener((request, sender) => {
@@ -22,17 +21,27 @@ chrome.extension.onMessage.addListener((request, sender) => {
     if (request.action !== '' && request.payload !== null) {
 
         switch (request.action) {
+            case 'iframeEmpty':
+
+                const link = document.createElement('a');
+                      link.href = request.payload;
+                      link.target = '_blank';
+                      link.innerText = 'Click here to view offer in a new window';
+
+                document.querySelector(`.iframeEmpty`).append(link);
+
+                revealSection('iframeEmpty');
+
+                break;
             case 'edit':
                 handleEdit(request.payload);
                 break;
             case 'debug':
                 console.log(request.payload);
                 break;
-            case 'feedback':
+            case 'offerDataFound':
 
                 const data = request.payload;
-
-                console.log(data);
 
                 if(data) {
 
@@ -66,13 +75,8 @@ chrome.extension.onMessage.addListener((request, sender) => {
                         }
                     }
 
-                    $popupContainer.classList.add('offer');
+                    revealSection('information')
 
-                } else {
-
-                    $popupContainer.classList.add('no-offer');
-
-                    debug('No offer info');
                 }
 
                 break;
@@ -83,9 +87,8 @@ chrome.extension.onMessage.addListener((request, sender) => {
     } else {
         console.error('Missing action');
     }
+
 });
-
-
 
 button_clipboard.addEventListener('click', () => {
 
@@ -155,13 +158,28 @@ function getClipboard() {
  * Utility function to render data to the popup window.
  *
  * @param content {string} The HTML to add to the popup.
+ * @param json {boolean} Is the message json?
  */
-function debug(content) {
-    const debugMessage = document.createElement('div');
-          debugMessage.innerHTML = content;
-          debugMessage.style.cssText = "border: 1px solid red; color: black; padding: 10px; margin-top: 10px;";
+function debug(content, json = false) {
 
-    document.querySelector('.pts-spyglass').appendChild(debugMessage);
+    let debugMessage = document.querySelector('.debug');
+    let popupWindow = document.querySelector('.pts-spyglass');
+
+    if(!debugMessage) {
+        let debugElement = document.createElement('section');
+            debugElement.classList.add('debug');
+            debugElement.classList.add('active');
+
+        popupWindow.prepend(debugElement);
+    }
+
+    if(json) {
+        popupWindow.querySelector('.debug').innerHTML = '<pre>' + JSON.stringify(content, null, 4) + '</pre>';
+    } else {
+        popupWindow.querySelector('.debug').innerHTML = content;
+    }
+
+
 }
 
 /**
@@ -188,4 +206,13 @@ function reformatDateString(dateString) {
 
     return new Date(correctDateString);
 
+}
+
+function revealSection(section) {
+
+    if(section === '') return;
+
+    const sectionElement = document.querySelector(`.${section}`);
+
+    sectionElement.classList.toggle('active');
 }

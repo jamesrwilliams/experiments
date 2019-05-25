@@ -14,16 +14,35 @@
 				height: 200px;
 			}
 			.pts-spyglass {
-				opacity: 0;
+				opacity: 1;
 				width: 400px;
 				font-family: sans-serif;
 				margin: 0;
-				padding: 5px 8px;
 				transition: opacity 2s ease;
 			}
 
-			.offer.pts-spyglass {
+			.pts-spyglass * { box-sizing: border-box; }
+
+			.pts-spyglass section {
+				position: absolute;
+				padding: 5px;
+				width: 100%;
+				pointer-events: none;
+				height: 100%;
+				opacity: 0;
+				transition: opacity 0.7s ease;
+			}
+
+			.debug {
+				position: absolute;
 				opacity: 1;
+				bottom: 0;
+				height: 50%;
+			}
+
+			.pts-spyglass section.active {
+				opacity: 1;
+				pointer-events: all;
 			}
 
 		</style>
@@ -41,7 +60,14 @@
 			</ul>
 		</section>
 
-		<section class="developer" style="display: none">
+		<section class="iframeEmpty">
+
+			<h1>Unable to display iFrames directly</h1>
+
+			<p>Due to security issues with communicating with iframes, Spyglass cannot display this storefront information for you. However you can use the button to open it up in a new tab and view the information there!</p>
+		</section>
+
+		<section class="developer">
 			<div class="target-container">
 				<label for="target">
 					<span class="label-message">Target</span>
@@ -56,5 +82,5 @@
 			<input type="text" aria-hidden="true" id="clip" style="display: none" />
 		</section>
 	</body>
-	<script src="../scripts/popup.js"></script>
+	<script src="../scripts/spyglass.popup.js"></script>
 </html>

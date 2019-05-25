@@ -20,8 +20,8 @@
     "128": "assets/icon128.png"
   },
   "browser_action": {
-    "default_title": "HTML Replace",
-    "default_popup": "ui/popup.html"
+    "default_title": "Spyglass",
+    "default_popup": "ui/spyglass.popup.html"
   },
   "content_scripts": [
     {
@@ -29,7 +29,7 @@
         "<all_urls>"
       ],
       "js": [
-        "scripts/content.js"
+        "scripts/spyglass.content.js"
       ]
     }
   ]

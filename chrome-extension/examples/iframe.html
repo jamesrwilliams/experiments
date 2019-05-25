@@ -28,7 +28,7 @@
 <body>
 <button class="iframe-test-case" data-test-case="fail">Fail test</button>
 <button class="iframe-test-case" data-test-case="pass">Pass test</button>
-<iframe src="iframe-contents/iframe-pass.html" id="points-frame" frameborder="0"></iframe>
+<iframe src="https://xenodochial-lichterman-bedab4.netlify.com/iframe-pass.html" id="points-frame" frameborder="0"></iframe>
 <script>
 
 	document.querySelectorAll('button.iframe-test-case').forEach(button => {
@@ -38,7 +38,7 @@
 
 	        if(testcase !== '') {
                 let iframe = document.getElementById('points-frame');
-                iframe.src = `iframe-contents/iframe-${testcase}.html`;
+                iframe.src = `https://xenodochial-lichterman-bedab4.netlify.com/iframe-${testcase}.html`;
 	        } else {
 	            console.warn(`Test case attribute missing from ${button}`);
 	        }
