@@ -1,0 +1,31 @@
+<h1>Firebase sharing</h1>
+<hr>
+
+<h2>Todo</h2>
+
+<ol>
+  <li style="text-decoration: line-through;">Add router for my sanity</li>
+  <li style="text-decoration: line-through;">Add basic auth</li>
+  <li style="text-decoration: line-through;">Add basic crud</li>
+  <li>Create UID for space if user has none listed in data.</li>
+  <li>Share button - Allow another user to view this list.</li>
+</ol>
+
+<hr>
+
+<h2>Items</h2>
+
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <label for="title">
+    <span class="label-text">Item Title: </span>
+    <input name="title" id="title" type="text" placeholder="Example Link" formControlName="title">
+  </label>
+  <button type="submit" [disabled]="!itemForm.valid">Submit</button>
+</form>
+
+<ul>
+  <li *ngFor="let item of items">
+    <span>{{ item.title }}</span><button (click)="deleteItem(item)">Remove</button></li>
+</ul>
+
+<hr>
