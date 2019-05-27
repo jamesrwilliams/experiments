@@ -18,7 +18,7 @@
 
 <hr>
 
-<h2>{{ activeSpace.title }} items</h2>
+<h2>{{ activeSpace?.title }} items</h2>
 
 <form [formGroup]="itemForm" (ngSubmit)="itemOnSubmit()" autocomplete="off">
   <label for="itemTitle">
