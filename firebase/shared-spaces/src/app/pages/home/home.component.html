@@ -1,31 +1,48 @@
-<h1>Firebase sharing</h1>
+<h2>{{ user.email }} (<code>{{ user.uid }}</code>)</h2>
+
+<form [formGroup]="spaceForm" (ngSubmit)="spaceOnSubmit()" autocomplete="off">
+  <label for="spaceTitle">
+    <span class="label-text">Space Title: </span>
+    <input name="title" id="spaceTitle" type="text" placeholder="Example Link" formControlName="title">
+  </label>
+  <button type="submit" [disabled]="!spaceForm.valid">Submit</button>
+</form>
+
+<ul class="space-list" name="spaceSelector" id="spaceSelector" (change)="updateActiveSpace($event.target.value)">
+  <li *ngFor="let userSpace of userSpaces" [class.active]="userSpace.id === activeSpace?.id">
+    <p>{{  userSpace.title  }}</p>
+    <p><code>{{ userSpace.id }}</code></p>
+    <button style="background: blue; color: white;" *ngIf="userSpace.id !== activeSpace?.id" (click)="updateActiveSpace(userSpace)">Select</button>
+  </li>
+</ul>
+
 <hr>
 
-<h2>Todo</h2>
+<h2>{{ activeSpace.title }} items</h2>
 
-<ol>
-  <li style="text-decoration: line-through;">Add router for my sanity</li>
-  <li style="text-decoration: line-through;">Add basic auth</li>
-  <li style="text-decoration: line-through;">Add basic crud</li>
-  <li>Create UID for space if user has none listed in data.</li>
-  <li>Share button - Allow another user to view this list.</li>
-</ol>
-
-<hr>
-
-<h2>Items</h2>
-
-<form [formGroup]="itemForm" (ngSubmit)="onSubmit()" autocomplete="off">
-  <label for="title">
+<form [formGroup]="itemForm" (ngSubmit)="itemOnSubmit()" autocomplete="off">
+  <label for="itemTitle">
     <span class="label-text">Item Title: </span>
-    <input name="title" id="title" type="text" placeholder="Example Link" formControlName="title">
+    <input name="title" id="itemTitle" type="text" placeholder="Example Link" formControlName="title">
   </label>
   <button type="submit" [disabled]="!itemForm.valid">Submit</button>
 </form>
 
 <ul>
-  <li *ngFor="let item of items">
+  <li *ngFor="let item of currentItems">
     <span>{{ item.title }}</span><button (click)="deleteItem(item)">Remove</button></li>
 </ul>
 
 <hr>
+
+<h2>Share "{{ activeSpace?.title }}" list</h2>
+
+<form [formGroup]="shareForm" (ngSubmit)="addUserToSpace()" autocomplete="off">
+  <label for="shareRecipient">
+    <span class="label-text">Share email:</span>
+    <input type="text" id="shareRecipient" placeholder="User ID" formControlName="user">
+    <button type="submit" [disabled]="!shareForm.valid">Submit</button>
+  </label>
+</form>
+
+<!--<pre><code>{{ user | json }}</code></pre>-->

@@ -1,0 +1,29 @@
+:host {
+  font-family: sans-serif;
+}
+
+code {
+  font-weight: 400;
+}
+
+#spaceSelector {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    border-bottom: 1px solid #ccc;
+    padding-left: 5px;
+    border-left-width: 5px;
+    border-left-style: solid;
+
+    button {
+      float: right;
+    }
+  }
+
+}
+
+li.active {
+  border-left-color: green;
+}

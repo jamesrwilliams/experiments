@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(() => {
+
+      // Check for spaces?
+
+
+
       this.router.navigateByUrl('/');
     });
   }

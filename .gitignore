@@ -27,6 +27,8 @@
 *.log
 *.sql
 *.sqlite
+environment.ts
+environment.**.ts
 
 # OS generated files #
 ######################

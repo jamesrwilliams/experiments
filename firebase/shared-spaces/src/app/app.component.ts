@@ -10,15 +10,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AppComponent {
   title = 'shared-spaces';
 
-  loggedIn = false;
-
   constructor(
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore
-  ) {
-
-    console.log('Hello World');
-
-  }
+  ) {}
 
 }

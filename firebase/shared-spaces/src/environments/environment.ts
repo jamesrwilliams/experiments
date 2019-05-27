@@ -13,7 +13,7 @@ export const firebaseConfig = {
   projectId: 'sharing-experiment',
   storageBucket: 'sharing-experiment.appspot.com',
   messagingSenderId: '1036566140312',
-  appId: '1:1036566140312:web:e08938875e14ba99'
+  appId: '1:1036566140312:web:481ad3648fab8365'
 };
 
 /*
