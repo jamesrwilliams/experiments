@@ -75,7 +75,8 @@ chrome.extension.onMessage.addListener((request, sender) => {
                         }
                     }
 
-                    revealSection('information')
+                    console.log('Reveal information');
+                    revealSection('information');
 
                 }
 
@@ -178,8 +179,6 @@ function debug(content, json = false) {
     } else {
         popupWindow.querySelector('.debug').innerHTML = content;
     }
-
-
 }
 
 /**

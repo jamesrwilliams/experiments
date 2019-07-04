@@ -20,24 +20,28 @@
         window.postMessage(payload, '*');
     }
 
-    function buildPayload(offerType = 'standalone', input = false) {
+    function buildPayload(storeFrontType = 'standalone', input = false) {
         if (input) {
             let offer = input.offer.offer;
 
+            if(typeof offer.validity !== "undefined") {
+
+            };
+
             return {
-                offer: offerType,
+                offer: storeFrontType,
                 payload: {
                     consoleURL: offer.links.self.href,
                     name: offer.name,
-                    description: offer.description,
-                    startDate: offer.validity.startDate,
+                    description: (offer.description ? offer.description : ''),
+                    startDate: (offer.validity.startDate ? offer.validity.startDate : '' ),
                     endDate: offer.validity.endDate,
                     priority: offer.priority
                 }
             }
         } else {
             return {
-                offer: offerType,
+                offer: storeFrontType,
                 payload: false
             }
         }

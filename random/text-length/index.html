@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Text Length</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+
+		body {
+			background: #e9ecef;
+		}
+
+		textarea.form-control {
+			resize: vertical;
+			height: 200px;
+		}
+
+		button {
+			background: green;
+		}
+
+		table {
+			font-size: 21px;
+		}
+
+		td:nth-child(1) {
+			font-weight: bold;
+		}
+
+		td:nth-child(2) {
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<h1>File Length Checker</h1>
+		</div>
+		<div class="col-sm">
+			<table class="table">
+				<thead>
+				<tr>
+					<td>Current length</td>
+					<td><span id="result">0</span></td>
+				</tr>
+				<tr>
+					<td>Limit</td>
+					<td>25,000</td>
+				</tr>
+				<tr>
+					<td>Remaining</td>
+					<td><span id="difference">25,000</span> <span class="badge badge-secondary"><span id="percentage">0</span>%</span></td>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<main>
+		<div class="form-group">
+			<label for="test">Paste code here:</label>
+			<textarea class="form-control" id="test"></textarea>
+		</div>
+	</main>
+</div>
+
+	<script>
+        const textarea = document.getElementById('test');
+        const result = document.getElementById('result');
+        const difference = document.getElementById('difference');
+        const percentage = document.getElementById('percentage');
+
+        textarea.addEventListener('keyup', (event) => {
+            result.innerText = textarea.textLength.toLocaleString();
+            difference.innerText = (25000 - textarea.textLength).toLocaleString();
+            percentage.innerText = (100 - ((textarea.textLength / 25000) * 100).toFixed(2)).toString();
+        });
+	</script>
+</body>
+</html>

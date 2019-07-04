@@ -95,7 +95,9 @@ export class HomeComponent implements OnInit {
   }
 
   deleteItem(item) {
-    return this.afs.collection('spaces').doc(this.activeSpace.id).collection('items').doc(item.id).delete();
+    return this.afs.collection('spaces').doc(this.activeSpace.id).collection('items').doc(item.id).delete().catch((error) => {
+      console.warn(error);
+    });
   }
 
   itemOnSubmit(): void {
@@ -105,7 +107,7 @@ export class HomeComponent implements OnInit {
 
   addSpace(space) {
     space.id = this.afs.createId();
-    const createSpace = this.afs.collection('spaces').doc(space.id).set(space);
+    const createSpace = this.afs.collection('spaces').doc(space.id).set(space).catch(error => console.warn(error));
     const createSpaceRef = this.afs.collection('users').doc(this.user.uid).collection('spaces').doc(space.id).set({
       title: space.title,
       id: space.id
@@ -113,7 +115,7 @@ export class HomeComponent implements OnInit {
 
     const activeSpace = this.updateActiveSpace(space);
 
-    return Promise.all([createSpace, createSpaceRef, activeSpace]);
+    return Promise.all([createSpace, createSpaceRef, activeSpace]).catch(error => console.log(error));
 
   }
 

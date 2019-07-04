@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			padding: 20px;
+			background: #eee;
+			font-family: sans-serif;
+		}
+
+		main {
+			max-width: 960px;
+			margin: 0 auto;
+		}
+
+		.label {
+			overflow: hidden;
+			padding: 10px 0;
+			text-align: center;
+		}
+		.label > span {
+			display: inline-block;
+			padding: 5px 20px;
+			color: #444;
+			position: relative;
+		}
+		.label > span:before, .label > span:after {
+			content: '';
+			position: absolute;
+			background: #ccc;
+			height: 1px;
+			width: 9999px;
+			top: 50%;
+			display: block;
+		}
+		.label > span:before {
+			left: 0;
+			transform: translatex(-100%);
+		}
+		.label > span:after {
+			right: 0;
+			transform: translatex(100%);
+		}
+		.label-left {
+			text-align: left;
+		}
+		.label-left > span {
+			padding-left: 0;
+		}
+		.label-left:before {
+			display: none;
+		}
+		.label-right {
+			text-align: right;
+		}
+		.label-right > span {
+			padding-left: 0;
+		}
+		.label-right:after {
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+<main>
+
+	<div class="label">
+		<span>Center text</span>
+	</div>
+
+	<br>
+
+	<div class="label label-right">
+		<span>Right text</span>
+	</div>
+
+	<br>
+
+	<div class="label label-left">
+		<span>Left text</span>
+	</div>
+
+</main>
+</body>
+</html>
