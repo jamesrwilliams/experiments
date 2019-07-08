@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "mjml": "^4.4.0-beta.1"
+    "mjml": "^4.4.0-beta.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

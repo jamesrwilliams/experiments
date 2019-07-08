@@ -23,7 +23,7 @@
     "@types/puppeteer": "1.12.3",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
-    "puppeteer": "1.8.0"
+    "puppeteer": "^1.18.1"
   },
   "license": "MIT"
 }
