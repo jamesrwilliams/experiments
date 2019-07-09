@@ -1,0 +1,274 @@
+[
+  {
+    "code": "AC",
+    "name": "Acton GO"
+  },
+  {
+    "code": "AG",
+    "name": "Agincourt GO"
+  },
+  {
+    "code": "AJ",
+    "name": "Ajax GO"
+  },
+  {
+    "code": "AL",
+    "name": "Aldershot GO"
+  },
+  {
+    "code": "AD",
+    "name": "Allandale Waterfront GO"
+  },
+  {
+    "code": "AP",
+    "name": "Appleby GO"
+  },
+  {
+    "code": "AU",
+    "name": "Aurora GO"
+  },
+  {
+    "code": "BA",
+    "name": "Barrie South GO"
+  },
+  {
+    "code": "BL",
+    "name": "Bloor GO"
+  },
+  {
+    "code": "BD",
+    "name": "Bradford GO"
+  },
+  {
+    "code": "BE",
+    "name": "Bramalea GO"
+  },
+  {
+    "code": "BR",
+    "name": "Brampton GO"
+  },
+  {
+    "code": "BO",
+    "name": "Bronte GO"
+  },
+  {
+    "code": "BU",
+    "name": "Burlington GO"
+  },
+  {
+    "code": "CE",
+    "name": "Centennial GO"
+  },
+  {
+    "code": "CL",
+    "name": "Clarkson GO"
+  },
+  {
+    "code": "CO",
+    "name": "Cooksville GO"
+  },
+  {
+    "code": "DA",
+    "name": "Danforth GO"
+  },
+  {
+    "code": "DI",
+    "name": "Dixie GO"
+  },
+  {
+    "code": "DW",
+    "name": "Downsview Park GO"
+  },
+  {
+    "code": "EA",
+    "name": "East Gwillimbury GO"
+  },
+  {
+    "code": "EG",
+    "name": "Eglinton GO"
+  },
+  {
+    "code": "ER",
+    "name": "Erindale GO"
+  },
+  {
+    "code": "ET",
+    "name": "Etobicoke North GO"
+  },
+  {
+    "code": "EX",
+    "name": "Exhibition GO"
+  },
+  {
+    "code": "GE",
+    "name": "Georgetown GO"
+  },
+  {
+    "code": "GO",
+    "name": "Gormley GO"
+  },
+  {
+    "code": "GL",
+    "name": "Guelph Central GO"
+  },
+  {
+    "code": "GU",
+    "name": "Guildwood GO"
+  },
+  {
+    "code": "HA",
+    "name": "Hamilton GO Centre"
+  },
+  {
+    "code": "KE",
+    "name": "Kennedy GO"
+  },
+  {
+    "code": "KC",
+    "name": "King City GO"
+  },
+  {
+    "code": "KP",
+    "name": "Kipling GO"
+  },
+  {
+    "code": "KI",
+    "name": "Kitchener GO"
+  },
+  {
+    "code": "LA",
+    "name": "Langstaff GO"
+  },
+  {
+    "code": "LI",
+    "name": "Lincolnville GO"
+  },
+  {
+    "code": "LS",
+    "name": "Lisgar GO"
+  },
+  {
+    "code": "LO",
+    "name": "Long Branch GO"
+  },
+  {
+    "code": "MA",
+    "name": "Malton GO"
+  },
+  {
+    "code": "MP",
+    "name": "Maple GO"
+  },
+  {
+    "code": "MR",
+    "name": "Markham GO"
+  },
+  {
+    "code": "ME",
+    "name": "Meadowvale GO"
+  },
+  {
+    "code": "MK",
+    "name": "Milliken GO"
+  },
+  {
+    "code": "ML",
+    "name": "Milton GO"
+  },
+  {
+    "code": "MI",
+    "name": "Mimico GO"
+  },
+  {
+    "code": "MJ",
+    "name": "Mount Joy GO"
+  },
+  {
+    "code": "MO",
+    "name": "Mount Pleasant GO"
+  },
+  {
+    "code": "NE",
+    "name": "Newmarket GO"
+  },
+  {
+    "code": "NI",
+    "name": "Niagara Falls GO (Via Station"
+  },
+  {
+    "code": "OA",
+    "name": "Oakville GO"
+  },
+  {
+    "code": "OL",
+    "name": "Old Cummer GO"
+  },
+  {
+    "code": "OR",
+    "name": "Oriole GO"
+  },
+  {
+    "code": "OS",
+    "name": "Oshawa GO"
+  },
+  {
+    "code": "PI",
+    "name": "Pickering GO"
+  },
+  {
+    "code": "PO",
+    "name": "Port Credit GO"
+  },
+  {
+    "code": "RI",
+    "name": "Richmond Hill GO"
+  },
+  {
+    "code": "RO",
+    "name": "Rouge Hill GO"
+  },
+  {
+    "code": "RU",
+    "name": "Rutherford GO"
+  },
+  {
+    "code": "SC",
+    "name": "Scarborough GO"
+  },
+  {
+    "code": "SC",
+    "name": "St. Catharines GO (Via Station"
+  },
+  {
+    "code": "ST",
+    "name": "Stouffville GO"
+  },
+  {
+    "code": "SR",
+    "name": "Streetsville GO"
+  },
+  {
+    "code": "UN",
+    "name": "Union Station"
+  },
+  {
+    "code": "UI",
+    "name": "Unionville GO"
+  },
+  {
+    "code": "WR",
+    "name": "West Harbour"
+  },
+  {
+    "code": "WE",
+    "name": "Weston GO"
+  },
+  {
+    "code": "WH",
+    "name": "Whitby GO"
+  },
+  {
+    "code": "YO",
+    "name": "York University GO"
+  }
+]

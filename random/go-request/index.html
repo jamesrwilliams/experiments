@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>GO Refund Checker</title>
+</head>
+<body>
+<main>
+
+	<br>
+
+	<label for="origin">Origin Station</label>
+	<select id="origin">
+		<option value="Select Station/Stop">Select Station/Stop</option>
+		<option value="AC">Acton GO</option>
+		<option value="AG">Agincourt GO</option>
+		<option value="AJ">Ajax GO</option>
+		<option value="AL">Aldershot GO</option>
+		<option value="AD">Allandale Waterfront GO</option>
+		<option value="AP">Appleby GO</option>
+		<option value="AU">Aurora GO</option>
+		<option value="BA">Barrie South GO</option>
+		<option value="BL">Bloor GO</option>
+		<option value="BD">Bradford GO</option>
+		<option value="BE" selected>Bramalea GO</option>
+		<option value="BR">Brampton GO</option>
+		<option value="BO">Bronte GO</option>
+		<option value="BU">Burlington GO</option>
+		<option value="CE">Centennial GO</option>
+		<option value="CL">Clarkson GO</option>
+		<option value="CO">Cooksville GO</option>
+		<option value="DA">Danforth GO</option>
+		<option value="DI">Dixie GO</option>
+		<option value="DW">Downsview Park GO</option>
+		<option value="EA">East Gwillimbury GO</option>
+		<option value="EG">Eglinton GO</option>
+		<option value="ER">Erindale GO</option>
+		<option value="ET">Etobicoke North GO</option>
+		<option value="EX">Exhibition GO</option>
+		<option value="GE">Georgetown GO</option>
+		<option value="GO">Gormley GO</option>
+		<option value="GL">Guelph Central GO</option>
+		<option value="GU">Guildwood GO</option>
+		<option value="HA">Hamilton GO Centre</option>
+		<option value="KE">Kennedy GO</option>
+		<option value="KC">King City GO</option>
+		<option value="KP">Kipling GO</option>
+		<option value="KI">Kitchener GO</option>
+		<option value="LA">Langstaff GO</option>
+		<option value="LI">Lincolnville GO</option>
+		<option value="LS">Lisgar GO</option>
+		<option value="LO">Long Branch GO</option>
+		<option value="MA">Malton GO</option>
+		<option value="MP">Maple GO</option>
+		<option value="MR">Markham GO</option>
+		<option value="ME">Meadowvale GO</option>
+		<option value="MK">Milliken GO</option>
+		<option value="ML">Milton GO</option>
+		<option value="MI">Mimico GO</option>
+		<option value="MJ">Mount Joy GO</option>
+		<option value="MO">Mount Pleasant GO</option>
+		<option value="NE">Newmarket GO</option>
+		<option value="NI">Niagara Falls GO (Via Station)</option>
+		<option value="OA">Oakville GO</option>
+		<option value="OL">Old Cummer GO</option>
+		<option value="OR">Oriole GO</option>
+		<option value="OS">Oshawa GO</option>
+		<option value="PIN">Pickering GO</option>
+		<option value="PO">Port Credit GO</option>
+		<option value="RI">Richmond Hill GO</option>
+		<option value="RO">Rouge Hill GO</option>
+		<option value="RU">Rutherford GO</option>
+		<option value="SC">Scarborough GO</option>
+		<option value="SCTH">St. Catharines GO (Via Station)</option>
+		<option value="ST">Stouffville GO</option>
+		<option value="SR">Streetsville GO</option>
+		<option value="UN">Union Station</option>
+		<option value="UI">Unionville GO</option>
+		<option value="WR">West Harbour</option>
+		<option value="WE">Weston GO</option>
+		<option value="WH">Whitby GO</option>
+		<option value="YO">York University GO</option>
+	</select>
+
+	<br>
+
+	<label for="destination">Destination Station</label>
+	<select id="destination">
+		<option value="Select Station/Stop">Select Station/Stop</option>
+		<option value="AC">Acton GO</option>
+		<option value="AG">Agincourt GO</option>
+		<option value="AJ">Ajax GO</option>
+		<option value="AL">Aldershot GO</option>
+		<option value="AD">Allandale Waterfront GO</option>
+		<option value="AP">Appleby GO</option>
+		<option value="AU">Aurora GO</option>
+		<option value="BA">Barrie South GO</option>
+		<option value="BL">Bloor GO</option>
+		<option value="BD">Bradford GO</option>
+		<option value="BE">Bramalea GO</option>
+		<option value="BR">Brampton GO</option>
+		<option value="BO">Bronte GO</option>
+		<option value="BU">Burlington GO</option>
+		<option value="CE">Centennial GO</option>
+		<option value="CL">Clarkson GO</option>
+		<option value="CO">Cooksville GO</option>
+		<option value="DA">Danforth GO</option>
+		<option value="DI">Dixie GO</option>
+		<option value="DW">Downsview Park GO</option>
+		<option value="EA">East Gwillimbury GO</option>
+		<option value="EG">Eglinton GO</option>
+		<option value="ER">Erindale GO</option>
+		<option value="ET">Etobicoke North GO</option>
+		<option value="EX">Exhibition GO</option>
+		<option value="GE">Georgetown GO</option>
+		<option value="GO">Gormley GO</option>
+		<option value="GL">Guelph Central GO</option>
+		<option value="GU">Guildwood GO</option>
+		<option value="HA">Hamilton GO Centre</option>
+		<option value="KE">Kennedy GO</option>
+		<option value="KC">King City GO</option>
+		<option value="KP">Kipling GO</option>
+		<option value="KI">Kitchener GO</option>
+		<option value="LA">Langstaff GO</option>
+		<option value="LI">Lincolnville GO</option>
+		<option value="LS">Lisgar GO</option>
+		<option value="LO">Long Branch GO</option>
+		<option value="MA">Malton GO</option>
+		<option value="MP">Maple GO</option>
+		<option value="MR">Markham GO</option>
+		<option value="ME">Meadowvale GO</option>
+		<option value="MK">Milliken GO</option>
+		<option value="ML">Milton GO</option>
+		<option value="MI">Mimico GO</option>
+		<option value="MJ">Mount Joy GO</option>
+		<option value="MO">Mount Pleasant GO</option>
+		<option value="NE">Newmarket GO</option>
+		<option value="NI">Niagara Falls GO (Via Station)</option>
+		<option value="OA">Oakville GO</option>
+		<option value="OL">Old Cummer GO</option>
+		<option value="OR">Oriole GO</option>
+		<option value="OS">Oshawa GO</option>
+		<option value="PIN">Pickering GO</option>
+		<option value="PO">Port Credit GO</option>
+		<option value="RI">Richmond Hill GO</option>
+		<option value="RO">Rouge Hill GO</option>
+		<option value="RU">Rutherford GO</option>
+		<option value="SC">Scarborough GO</option>
+		<option value="SCTH">St. Catharines GO (Via Station)</option>
+		<option value="ST">Stouffville GO</option>
+		<option value="SR">Streetsville GO</option>
+		<option value="UN" selected>Union Station</option>
+		<option value="UI">Unionville GO</option>
+		<option value="WR">West Harbour</option>
+		<option value="WE">Weston GO</option>
+		<option value="WH">Whitby GO</option>
+		<option value="YO">York University GO</option>
+	</select>
+
+	<br>
+	<br>
+
+	<button id="journeyLookUp">Look Up Journeys</button>
+
+	<br>
+	<br>
+
+	<div class="loaded-trips">
+		<label for="trips">Select Departure Time</label>
+		<select name="trips" id="trips"></select>
+		<br>
+		<button>Check trip</button>
+	</div>
+
+	<h1>Result: <span id="result"></span></h1>
+
+</main>
+<script src="site.js"></script>
+</body>
+</html>
