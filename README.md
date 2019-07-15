@@ -8,6 +8,7 @@ The idea behind this repo was shamelessly stolen from [adriancarriger/experiment
 
 - [random](./random) - A collection of random stuff.
 - [javascript](./javascript) - Anything Javascript related.
+- [css](./css) - Style all the things. 
 - [chrome-extension](./chrome-extension) - An attempt at a Chrome browser extension.
 
 These sections are the ones with a README so they can be found via the GitHub pages build. Otherwise you'll just be looking at source :(.
