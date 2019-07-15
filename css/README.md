@@ -2,8 +2,8 @@
 
 ### Mini-projects
 
-- [css-animations](./css-animations) An example of CSS animations using the `:hover` selector  and CSS transforms.
-- [the-fieldset-legend](./the-fieldset-legend) Recreating the fieldset element legend effect without the fieldset.
+- [css-animations](./css-animations) - An example of CSS animations using the `:hover` selector  and CSS transforms.
+- [the-fieldset-legend](./the-fieldset-legend) - Recreating the fieldset element legend effect without the fieldset.
 
 ### Snippets
 
