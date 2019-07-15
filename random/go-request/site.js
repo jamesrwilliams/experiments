@@ -18,8 +18,6 @@ document.getElementById('journeyLookUp').addEventListener('click', (event) => {
 
 });
 
-
-
 function getJourneyEndpoint(dateString, origin, destination) {
     return `https://secure.gotransit.com/service/EligibilityService.svc/GetTrips?dateString=${dateString}&fromStation=${origin}&tostation=${destination}`;
 }
@@ -36,7 +34,7 @@ function makeRequest(requestURL) {
 
     xhr.setRequestHeader("User-Agent", "PostmanRuntime/7.15.0");
     xhr.setRequestHeader("Accept", "*/*");
-    xhr.setRequestHeader("Content-Type","application/json");
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     xhr.setRequestHeader("Accept","application/json");
     xhr.setRequestHeader("Cache-Control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "8dab21d2-a247-45c2-81c9-74886e973a1b,12d3f517-3010-4e18-a9a4-201c153877ac");
