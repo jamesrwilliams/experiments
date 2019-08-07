@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>The &lt;img&gt; srcset</title>
+	<style>
+		html,
+		body {
+			margin: 0;
+			font-family: sans-serif;
+			-webkit-font-smoothing: antialiased;
+			font-smoothing: antialiased;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body:before {
+			content: 'MediaQuery => Small';
+			background: orangered;
+			padding: 10px;
+			display: block;
+			text-align: center;
+			font-weight: bold;
+		}
+
+		.main {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		@media (min-width: 1120px) {
+			body:before {
+				content: 'MediaQuery => Large';
+				background: yellowgreen;
+			}
+		}
+
+		code {
+			color: #444444;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		h1 {
+			text-align: center;
+			background: #eee;
+			margin: 0;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+<h1>Current page width: <code><span id="screenWidth">0</span>px</code></h1>
+<pre><code id="screenOutput"></code></pre>
+<div class="main">
+	<picture>
+		<source media="(min-width: 1120px)" type="image/jpg" srcset="https://placehold.it/2000x450/FF00FF/FFFFFF?text=desktop%20@%201x 1x, https://placehold.it/2400x450/FF0000/FFFFFF?text=desktop%20@%202x 2x">
+		<source media="(max-width: 1120px)" type="image/jpg" srcset="https://placehold.it/1120x250/00FFFF/FFFFFF?text=mobile%20@%201x 1x, https://placehold.it/1120x250/FFF000/FFFFFF?text=mobile%20@%202x 2x">
+		<img src="https://placehold.it/900x50/FF00FF/FFFFFF" alt="Space Needle">
+	</picture>
+</div>
+<script>
+    function debounce(func){
+        let timer;
+        return function(event){
+            if(timer) clearTimeout(timer);
+            timer = setTimeout(func,100,event);
+        };
+    };
+
+    function updateSizeLabel() {
+        document.getElementById('screenWidth').innerText = window.innerWidth;
+    }
+    updateSizeLabel();
+    window.addEventListener("resize",debounce(function(e){
+        updateSizeLabel();
+    }));
+</script>
+</body>
+</html>
