@@ -2,7 +2,9 @@ const fs = require('fs-extra');
 const csv = require('csv-parser');
 const results = [];
 
-fs.createReadStream('data/two-tokens.csv')
+const fileName = 'copa-ios-tokens';
+
+fs.createReadStream(`data/${fileName}.csv`)
     .pipe(csv())
     .on('data', (data) => results.push(data))
     .on('end', () => {
@@ -23,7 +25,7 @@ function generateOutput(input) {
 
         let indexInArray = objectArrayIndex(output, lng, 'identifier');
 
-        if(!indexInArray) {
+        if(indexInArray === false) {
             output.push({
                 "identifier": `${lng}`,
                 "prefix": `${lng}-`,
@@ -38,7 +40,7 @@ function generateOutput(input) {
         count++;
     });
 
-    fs.writeFile('tokens.json', JSON.stringify(output, null, 4), (err) => {
+    fs.writeFile(`output/${fileName}-tokens.json`, JSON.stringify(output, null, 4), (err) => {
         // throws an error, you could also catch it here
         if (err) throw err;
 
