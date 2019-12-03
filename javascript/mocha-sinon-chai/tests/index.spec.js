@@ -10,17 +10,41 @@ describe('Helpers', function() {
    describe('#logger()', function() {
        it('should ensure helper is called once', function() {
 
-           // Create Sinon Fake
-           // Replace real helper() with fake using sinon.replace();
-           const fakeHelper = sinon.fake.returns('apple pie');
-           sinon.replace(helpers, 'logger', fakeHelper);
+           const consoleFake = sinon.fake();
 
-           // Ensure called helpers.helper() once.
-           helpers.helper();
-           // helpers.logger() should be spied
+           sinon.replace(console, 'log', consoleFake);
 
-           console.log(fakeHelper.callCount);
+           helpers.helper('James');
+
+           expect(consoleFake.lastArg).to.equal('Logger: James, thank you.');
+
+           sinon.restore();
+
        });
+
+       it('should mock logger()', function() {
+          const loggerFake = sinon.fake();
+
+          const helperSpy = sinon.spy(helpers, 'helper');
+          const loggerSpy = sinon.spy(helpers, 'logger');
+
+          sinon.replace(helpers, 'logger', loggerFake);
+
+          helpers.helper('foo');
+          helpers.helper('bar');
+
+          console.log(helperSpy.args);
+          console.log('---');
+          console.log(helperSpy.getCalls());
+          console.log(loggerSpy.getCalls());
+
+          console.log({helperSpy});
+          console.log({loggerSpy});
+          // console.log('---');
+          // console.log(loggerFake);
+
+       });
+
    });
 
    describe('#helper()', function() {

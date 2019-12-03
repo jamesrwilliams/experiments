@@ -1,5 +1,5 @@
-const helper = function() {
-    logger('foo');
+const helper = function(message) {
+    logger(message);
 };
 
 const logger = function(message) {
