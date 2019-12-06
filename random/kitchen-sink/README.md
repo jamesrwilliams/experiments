@@ -1,5 +1,8 @@
-# A HTML Kitchen Sink
+# A Kitchen Sink
 
-My attempt at a comprehensive HTML kitchen sink with some very common and some more obscure HTML elements on display. [View the Boilerplate](./kitchen-sink.html).
+My attempt at a comprehensive kitchen sink with some very common and some more obscure HTML elements on display.
+
+- In HTML - [kitchen-sink.html](./kitchen-sink.html).
+- In Markdown - [kitchen-sink.md](./kitchen-sink.md).
 
 
