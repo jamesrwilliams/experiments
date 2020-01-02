@@ -14,6 +14,7 @@ export class AppComponent {
   config;
   data;
   output;
+  original;
 
   sample = {
     example: {
@@ -21,6 +22,11 @@ export class AppComponent {
         value: {
           'en-US': {
             'sod.reason': 'WINNER',
+            'sod.rhyme': 'another node'
+          },
+          'ar-SA': {
+            'sod.reason': 'Winner',
+            'sod.rhyme': 'Yet another node'
           }
         },
       }
@@ -30,6 +36,7 @@ export class AppComponent {
   constructor(private formBuilder: FormBuilder) {
 
     this.config = this.sample;
+    this.original = this.config;
 
     this.nodeList = this.formBuilder.group({
       nodes: this.formBuilder.array([]),
@@ -58,6 +65,7 @@ export class AppComponent {
 
       reader.onload = () => {
         this.config = JSON.parse(reader.result);
+        this.original = this.config;
       };
     }
   }
@@ -80,7 +88,7 @@ export class AppComponent {
     const parts = key.split('.');
     const langRegex = /^[a-z]{2}-[A-Z]{2}$/;
 
-    let base = object;
+    let base = {...object};
     let foundLanguageRegex = false;
     let finalIndex = '';
 
@@ -129,26 +137,19 @@ export class AppComponent {
   }
 
   processNewJSON(): void {
-    // Make node changes.
-    // Save file.
-    let tasks = this.nodeList.value.nodes;
-    let data = this.config;
-
+    const tasks = this.nodeList.value.nodes;
+    let copy = this.config;
     if (tasks) {
 
       tasks.forEach((task) => {
-
         const key = task.key;
         const newValue = task.value;
-
-        this.parseKey(key, data, newValue);
-
+        this.parseKey(key, copy, newValue);
       });
 
     }
 
-    console.log(data);
-    this.output = data;
+    this.output = copy;
 
   }
 
