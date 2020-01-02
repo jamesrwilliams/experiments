@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Form, FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 
 @Component({
@@ -16,27 +16,7 @@ export class AppComponent {
   output;
   original;
 
-  sample = {
-    example: {
-      spoons: {
-        value: {
-          'en-US': {
-            'sod.reason': 'WINNER',
-            'sod.rhyme': 'another node'
-          },
-          'ar-SA': {
-            'sod.reason': 'Winner',
-            'sod.rhyme': 'Yet another node'
-          }
-        },
-      }
-    }
-  };
-
   constructor(private formBuilder: FormBuilder) {
-
-    this.config = this.sample;
-    this.original = this.config;
 
     this.nodeList = this.formBuilder.group({
       nodes: this.formBuilder.array([]),
