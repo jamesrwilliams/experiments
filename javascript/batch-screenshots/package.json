@@ -1,0 +1,16 @@
+{
+  "name": "batch-screenshots",
+  "version": "1.0.0",
+  "description": "Takes screenshots and saves them to the output directory of the provided URLs.",
+  "main": "index.js",
+  "dependencies": {
+    "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

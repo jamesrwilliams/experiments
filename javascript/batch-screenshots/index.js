@@ -1,9 +1,8 @@
 const puppeteer = require('puppeteer');
 
 const targets = [
-    'https://google.com',
-    'https://apple.com',
-    'http://pts-jwilliams.local:5757/company/about/'
+    'https://pts-apex.netlify.com/solutions/loyalty-currency-retailing/',
+    'https://company.points.com/solutions/loyalty-currency-retailing/',
 ];
 
 let defaults = {
@@ -18,14 +17,14 @@ let defaults = {
 
     for( let i = 0; i < targets.length; i++) {
 
-        await page.goto(targets[i]);
+        await page.goto(targets[i], {waitUntil: 'networkidle2'});
 
         const pageTitle = await page.title();
         const title = (pageTitle !== '' ? '-' + slugify(pageTitle) : '');
 
         await page.screenshot({...defaults, path: `output/${dateStamp}${title}.png`});
 
-        console.log(`${i + 1}/${targets.length} completed.`)
+        console.log(`${i + 1}/${targets.length} completed. (${targets[i]})`);
     }
 
     await browser.close();
