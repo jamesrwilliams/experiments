@@ -2,6 +2,13 @@
 
 Parses [PressPage](https://www.presspage.com/) JSON into a CSV file. Please note this parser ignores images and just uses the following top-level properties: `title`, `subtitle`, `date`, and `url`.
 
+## Usage
+
+1. In the `data` directory add your JSON backup file.
+2. Change the `filename` variable on line 3 of the app.js file to your filename.
+3. Run `node app.js`
+4. Output CSV can be found in the `output` directory.
+
 ## Sample Data
 
 ```

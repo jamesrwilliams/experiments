@@ -1,5 +1,6 @@
 const fs = require('fs');
-const items = JSON.parse(fs.readFileSync('./data/releases-en-us.json', 'utf8'));
+const fileName = "releases-en-us";
+const items = JSON.parse(fs.readFileSync(`./data/${fileName}.json`, 'utf8'));
 
 let output = '';
 let headers = '';
