@@ -1,0 +1,32 @@
+[
+  {
+    "images": {
+      "157": "https://placehold.it/600x200?text=157_A",
+      "500": "https://placehold.it/500x200?text=157_B",
+      "800": "https://placehold.it/300x200?text=157_C"
+    },
+    "title": "Sample title #1",
+    "subtitle": "Sample subtitle #1",
+    "boilerplate": {
+      "text": ""
+    },
+    "date": "2019-10-01 00:00:00",
+    "url": "https://example.com",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  {
+    "images": {
+      "157": "https://placehold.it/300x200?text=157_A",
+      "500": "https://placehold.it/600x200?text=157_B",
+      "800": "https://placehold.it/700x200?text=157_C"
+    },
+    "title": "Example Title #2",
+    "subtitle": "Example subtitle #2",
+    "boilerplate": {
+      "text": ""
+    },
+    "date": "2019-06-19 00:00:00",
+    "url": "https://example.com/2/",
+    "message": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
+  }
+]
