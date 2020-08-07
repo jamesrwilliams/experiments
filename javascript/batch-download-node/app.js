@@ -33,20 +33,27 @@ const download = function(url) {
   });
 };
 
-const processBatchFile = async (data, propertyKey) => {
+const processInput = async () => {
+  const filePath = path.resolve('./input/data.txt');
+  const buffer = fs.readFileSync(filePath);
+  const data = buffer.toString();
+  return data.split('\n').filter((n) => n !== '' && n[0] !== '#' );
+}
+
+const processBatchFile = async () => {
   const promises = [];
 
+  const data = await processInput();
+
   data.forEach((entry) => {
-    promises.push(download(entry[propertyKey]));
+    promises.push(download(entry));
   });
 
   return Promise.all(promises);
 }
 
-processBatchFile(tempData, 'logo').then(() => {
+processBatchFile().then(() => {
   console.log('Process complete');
 }).catch((errors) => {
   console.log(errors);
 });
-
-
