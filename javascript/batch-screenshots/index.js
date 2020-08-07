@@ -10,24 +10,25 @@ let defaults = {
 };
 
 (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1400, height: 250 });
+
     const dateStamp = getDateStamp();
 
+    console.log(`Starting screenshot generation of ${targets.length} URLs.`);
+
+    const browser = await puppeteer.launch({headless: false, slowMo: 250});
+
     for( let i = 0; i < targets.length; i++) {
-
-        await page.goto(targets[i], {waitUntil: 'networkidle2'});
-
+        const page = await browser.newPage();
+        await page.setViewport({ width: 1400, height: 1400 });
+        await page.goto(targets[i], { waitUntil: 'networkidle2'});
         const pageTitle = await page.title();
         const title = (pageTitle !== '' ? '-' + slugify(pageTitle) : '');
-
         await page.screenshot({...defaults, path: `output/${dateStamp}${title}.png`});
-
         console.log(`${i + 1}/${targets.length} completed. (${targets[i]})`);
     }
 
     await browser.close();
+
 })();
 
 function slugify(string) {
